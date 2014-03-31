@@ -13,16 +13,19 @@
 	</head>
 	<body>
 	
-	<div id="content" class="container-fluid">
+	<div id="content" class="container">
 		<div class="row">
 			<div class="col-sm-12">
 				<h1 class="page-header text-center">jquery-tab-complete</h1>
 			</div>
 		</div>
 		<div id="example" class="row">
-			<form class="col-sm-offset-2 col-sm-8">
-				<input id="input" class="form-control" type="text" autofocus>
-			</form>
+			<div class="col-sm-12">
+				<form class="jumbotron">
+					<p>Type lowercase <kbd>a</kbd> and press <kbd>tab</kbd> multiple times.</p>
+					<input id="input" class="form-control" type="text" autofocus>
+				</form>
+			</div>
 		</div>
 	</div>
 	
@@ -31,7 +34,15 @@
 	<script>
 	$(function() {
 	
-	$("input").tabComplete();
+	$("#input").tabComplete([
+		"artist",
+		"artistic",
+		"artistically",
+		"artistry",
+		"arts",
+		"artsy",
+		"artwork",
+	]);
 	
 	});
 	</script>
