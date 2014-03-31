@@ -2,7 +2,7 @@
 <html>
 	<head>
 	
-	<title>jquery-scroll-glue</title>
+	<title>jquery-tab-complete</title>
 
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,7 +16,7 @@
 	<div id="content" class="container-fluid">
 		<div class="row">
 			<div class="col-sm-12">
-				<h1 class="page-header text-center">jquery-shell-complete</h1>
+				<h1 class="page-header text-center">jquery-tab-complete</h1>
 			</div>
 		</div>
 		<div id="example" class="row">
@@ -27,7 +27,14 @@
 	</div>
 	
 	<script src="//code.jquery.com/jquery-2.1.0.min.js"></script>
-	<script src="jquery.shellComplete.js"></script>
+	<script src="jquery.tabComplete.js"></script>
+	<script>
+	$(function() {
+	
+	$("input").tabComplete();
+	
+	});
+	</script>
 	
 	</body>
 </html>
