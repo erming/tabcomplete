@@ -4,3 +4,8 @@ body {
 #content {
 	max-width: 620px;
 }
+#version {
+	color: #bbb;
+	margin-top: 10px;
+	text-align: center;
+}
