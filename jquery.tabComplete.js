@@ -12,6 +12,7 @@
 	$.fn.tabComplete = function(list, options) {
 		var settings = $.extend({
 			appendSpace: false,
+			caseSensitive: false,
 		}, options);
 		
 		var self = this;
@@ -36,9 +37,16 @@
 			var last = text.splice(-1)[0];
 			
 			if (!match.length) {
-				var list = self.data('list');
-				match = $.grep(list, function(w) {
-					return last != '' && w.indexOf(last) !== -1;
+				match = $.grep(self.data('list'), function(w) {
+					var l = last;
+					if (l == '') {
+						return;
+					}
+					if (!settings.caseSensitive) {
+						l = l.toLowerCase();
+						w = w.toLowerCase();
+					}
+					return w.indexOf(l) !== -1;
 				});
 			}
 			
