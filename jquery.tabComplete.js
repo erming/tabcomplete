@@ -9,7 +9,11 @@
  */
 
 (function($) {
-	$.fn.tabComplete = function(list) {
+	$.fn.tabComplete = function(list, options) {
+		var settings = $.extend({
+			appendSpace: true,
+		}, options);
+		
 		var self = this;
 		if (self.size() > 1) {
 			return self.each(function() {
@@ -25,7 +29,7 @@
 				return;
 			}
 			
-			var text = self.val().split(' ');
+			var text = self.val().trim().split(' ');
 			var last = text.splice(-1)[0];
 			
 			if (!match.length) {
@@ -44,7 +48,7 @@
 			}
 			
 			text.push(last);
-			self.val(text.join(' '));
+			self.val(text.join(' ') + (settings.appendSpace ? ' ' : ''));
 			return false;
 		});
 	};
