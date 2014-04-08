@@ -5,7 +5,7 @@
  * Copyright (c) 2014 Mattias Erming <mattias@mattiaserming.com>
  * Licensed under the MIT License.
  *
- * Version 0.1.0
+ * Version 0.2.0
  */
 
 (function($) {
@@ -22,7 +22,7 @@
 			});
 		}
 		
-		// Keep the list stored in the DOM via $.data variable
+		// Keep the list stored in the DOM via jQuery.data() variable.
 		self.data('list', list);
 		
 		var match = [];
