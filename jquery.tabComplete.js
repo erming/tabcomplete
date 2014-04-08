@@ -11,7 +11,7 @@
 (function($) {
 	$.fn.tabComplete = function(list, options) {
 		var settings = $.extend({
-			appendSpace: true,
+			appendSpace: false,
 		}, options);
 		
 		var self = this;
@@ -20,6 +20,9 @@
 				$(this).tabComplete(list);
 			});
 		}
+		
+		// Keep the list stored in the DOM via $.data variable
+		self.data('list', list);
 		
 		var match = [];
 		self.on('keydown', function(e) {
@@ -33,6 +36,7 @@
 			var last = text.splice(-1)[0];
 			
 			if (!match.length) {
+				var list = self.data('list');
 				match = $.grep(list, function(w) {
 					return last != '' && w.indexOf(last) !== -1;
 				});
