@@ -18,7 +18,7 @@
 		var self = this;
 		if (self.size() > 1) {
 			return self.each(function() {
-				$(this).tabComplete(list);
+				$(this).tabComplete(list, options);
 			});
 		}
 		
