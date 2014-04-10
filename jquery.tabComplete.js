@@ -56,11 +56,10 @@
 			}
 			
 			if (match.length) {
-				last = match[i];
+				text.push(match[i]);
+				self.val(text.join(' ') + settings.after);
 			}
 			
-			text.push(last);
-			self.val(text.join(' ') + settings.after);
 			return false;
 		});
 	};
