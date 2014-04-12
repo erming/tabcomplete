@@ -24,7 +24,7 @@
 		<div class="row">
 			<div class="col-sm-12">
 				<form class="jumbotron">
-					<p>Type lowercase <kbd>a</kbd> and press <kbd>tab</kbd> multiple times.</p>
+					<p>Type <kbd>a</kbd> and press <kbd>tab</kbd> multiple times.</p>
 					<input id="input" class="form-control" type="text" autofocus>
 				</form>
 			</div>
@@ -47,7 +47,7 @@
 					// jQuery ready event
 					$(function() {
 						$('.target').tabComplete({
-							words: [] // Array with words to complete
+							list: [] // Array with strings to complete
 						});
 					});
 				&lt;/script&gt;
@@ -79,15 +79,19 @@
 			
 		prettyPrint();
 		
-		$("#input").tabComplete([
-			"artist",
-			"artistic",
-			"artistically",
-			"artistry",
-			"arts",
-			"artsy",
-			"artwork",
-		]);
+		$("#input").tabComplete({
+			after: '',
+			caseSensitive: false,
+			list: [
+				"artist",
+				"artistic",
+				"artistically",
+				"artistry",
+				"arts",
+				"artsy",
+				"artwork",
+			],
+		});
 	});
 	</script>
 	

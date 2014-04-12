@@ -9,21 +9,22 @@
  */
 
 (function($) {
-	$.fn.tabComplete = function(list, options) {
+	$.fn.tabComplete = function(options) {
 		var settings = $.extend({
 			after: '',
 			caseSensitive: false,
+			list: [],
 		}, options);
 		
 		var self = this;
 		if (self.size() > 1) {
 			return self.each(function() {
-				$(this).tabComplete(list, options);
+				$(this).tabComplete(options);
 			});
 		}
 		
-		// Keep the list stored in the DOM via jQuery.data() variable.
-		self.data('list', list);
+		// Keep the list stored in the DOM via jQuery.data()
+		self.data('list', settings.list);
 		
 		var match = [];
 		self.on('keydown', function(e) {
