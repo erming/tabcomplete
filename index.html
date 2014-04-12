@@ -32,6 +32,31 @@
 		<div class="row">
 			<div class="col-sm-12">
 				<h2 class="page-header text-center">
+					Getting started
+				</h2>
+				<h3>Include scripts</h3>
+				<p>Start by including <a href="http://jquery.com" target="_blank">jQuery</a> and the plugin.</p>
+				<pre class="prettyprint">
+				&lt;script src="jquery.js"&gt;&lt;/script&gt;
+				&lt;script src="jquery.tabComplete.js"&gt;&lt;/script&gt;
+				</pre>
+				<h3>Activate the plugin</h3>
+				<p>Now call <code>.tabComplete()</code> on your inputs, like this:</p>
+				<pre class="prettyprint">
+				&lt;script&gt;
+					// jQuery ready event
+					$(function() {
+						$('.target').tabComplete({
+							words: [] // Array with words to complete
+						});
+					});
+				&lt;/script&gt;
+				</pre>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-12">
+				<h2 class="page-header text-center">
 					Download
 				</h2>
 				<div class="text-center">
@@ -42,21 +67,27 @@
 		</div>
 	</div>
 	
+	<script src="//cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js"></script>
 	<script src="//code.jquery.com/jquery-2.1.0.min.js"></script>
 	<script src="jquery.tabComplete.js"></script>
 	<script>
 	$(function() {
-	
-	$("#input").tabComplete([
-		"artist",
-		"artistic",
-		"artistically",
-		"artistry",
-		"arts",
-		"artsy",
-		"artwork",
-	]);
-	
+		// Strip tabs from <pre> elements
+		$("pre").each(function() {
+			$(this).html($(this).html().replace(/\t{4}/g, ""));
+		});
+			
+		prettyPrint();
+		
+		$("#input").tabComplete([
+			"artist",
+			"artistic",
+			"artistically",
+			"artistry",
+			"arts",
+			"artsy",
+			"artwork",
+		]);
 	});
 	</script>
 	
