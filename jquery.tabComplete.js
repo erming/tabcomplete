@@ -1,6 +1,6 @@
 /*!
- * jquery-tab-complete
- * https://github.com/erming/jquery-tab-complete
+ * tabComplete
+ * https://github.com/erming/tabComplete
  *
  * Copyright (c) 2014 Mattias Erming <mattias@mattiaserming.com>
  * Licensed under the MIT License.
