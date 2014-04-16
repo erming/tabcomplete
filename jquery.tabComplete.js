@@ -47,7 +47,7 @@
 						l = l.toLowerCase();
 						w = w.toLowerCase();
 					}
-					return w.indexOf(l) !== -1;
+					return w.indexOf(l) == 0;
 				});
 			}
 			
