@@ -47,7 +47,13 @@
 					// jQuery ready event
 					$(function() {
 						$('.target').tabComplete({
-							list: [] // Array with strings to complete
+							list: [
+								'list',
+								'of',
+								'words',
+								'to',
+								'complete'
+							] 
 						});
 					});
 				&lt;/script&gt;
@@ -72,15 +78,15 @@
 	<script src="jquery.tabComplete.js"></script>
 	<script>
 	$(function() {
-		// Strip tabs from <pre> elements
 		$("pre").each(function() {
-			$(this).html($(this).html().replace(/\t{4}/g, ""));
+			// Strip tabs from <pre> elements
+			$(this).html($(this).html().replace(/^\t{4}/, "").replace(/\n\t{4}/g, "\n"));
 		});
 			
 		prettyPrint();
 		
 		$("#input").tabComplete({
-			after: '',
+			after: "",
 			caseSensitive: false,
 			list: [
 				"artist",

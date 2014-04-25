@@ -4,6 +4,8 @@ body {
 pre {
 	overflow-x: auto;
 	word-wrap: normal;
+	-moz-tab-size: 4;
+	     tab-size: 4;
 }
 .form-control:focus {
 	border-color: #ccc;

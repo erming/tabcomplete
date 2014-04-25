@@ -7,11 +7,6 @@
  *
  * Version 0.2.2
  */
-
-if (typeof jQuery === 'undefined') {
-	throw new Error('tabComplete requires jQuery')
-}
-
 (function($) {
 	$.fn.tabComplete = function(options) {
 		var settings = $.extend({
