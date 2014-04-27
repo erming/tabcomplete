@@ -1,5 +1,5 @@
 body {
-	margin: 10px 0 30px;
+	margin: 10px 0 50px;
 }
 pre {
 	overflow-x: auto;
@@ -15,10 +15,16 @@ pre {
 #content {
 	max-width: 620px;
 }
+#download .btn {
+	margin: 0 5px;
+}
 #version {
 	color: #bbb;
 	margin-top: 10px;
 	text-align: center;
+}
+#author {
+	margin-top: 2em;
 }
 
 .com { color: #93a1a1; }
