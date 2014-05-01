@@ -5,7 +5,7 @@
  * Copyright (c) 2014 Mattias Erming <mattias@mattiaserming.com>
  * Licensed under the MIT License.
  *
- * Version 0.2.3
+ * Version 0.2.4
  */
 (function($) {
 	$.fn.tabComplete = function(options) {
