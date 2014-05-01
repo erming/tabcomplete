@@ -37,16 +37,25 @@
 			var last = text.splice(-1)[0];
 			
 			if (!match.length) {
-				match = $.grep(self.data('list'), function(w) {
+				match = [];
+				$.each(self.data('list'), function(i, w) {
 					var l = last;
 					if (l == '') {
 						return;
+					} else if (typeof w === "function") {
+						var words = w(l);
+						if (words) {
+							match = match.concat(words);
+						}
+					} else if (!settings.caseSensitive) {
+						if (0 == w.toLowerCase().indexOf(l.toLowerCase())) {
+							match.push(w);
+						}
+					} else {
+						if (0 ==  w.indexOf(l)) {
+							match.push(w);
+						}
 					}
-					if (!settings.caseSensitive) {
-						l = l.toLowerCase();
-						w = w.toLowerCase();
-					}
-					return w.indexOf(l) == 0;
 				});
 			}
 			

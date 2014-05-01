@@ -96,6 +96,22 @@
 			
 		prettyPrint();
 		
+		// Example function to be used by tabConplete.
+		var match = function(str) {
+			var words = [
+				"arts",
+				"artsy",
+				"artwork"
+			];
+			var match = [];
+			$.each(words, function(i, w) {
+				if (0 == w.indexOf(str)) {
+					match.push(w);
+				}
+			});
+			return match;
+		};
+		
 		$("#input").tabComplete({
 			after: "",
 			caseSensitive: false,
@@ -104,9 +120,7 @@
 				"artistic",
 				"artistically",
 				"artistry",
-				"arts",
-				"artsy",
-				"artwork",
+				match // Here!
 			],
 		});
 		
