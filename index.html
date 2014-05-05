@@ -7,126 +7,21 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
-	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/3.0.1/normalize.min.css">
 	<link rel="stylesheet" href="style.css">
 	
 	</head>
 	<body>
 	
-	<div id="content" class="container">
-		<section id="title" class="row">
-			<div class="col-sm-12">
-				<h1 class="page-header text-center">
-					tabComplete <small>v0.2.4</small>
-				</h1>
-			</div>
-		</section>
-		<section id="demo" class="row">
-			<div class="col-sm-12">
-				<form class="jumbotron">
-					<p>Type <kbd>a</kbd> and press <kbd>tab</kbd> multiple times.</p>
-					<input id="input" class="form-control" type="text" autofocus>
-				</form>
-			</div>
-		</section>
-		<section id="getting-started" class="row">
-			<div class="col-sm-12">
-				<h2 class="page-header text-center">
-					Getting started
-				</h2>
-				<h3>Include scripts</h3>
-				<p>Start by including <a href="http://jquery.com" target="_blank">jQuery</a> and the plugin.</p>
-				<pre class="prettyprint">
-				&lt;script src="jquery.js"&gt;&lt;/script&gt;
-				&lt;script src="jquery.tabComplete.js"&gt;&lt;/script&gt;
-				</pre>
-				<h3>Activate the plugin</h3>
-				<p>Now call <code>.tabComplete()</code> on your inputs, like this:</p>
-				<pre class="prettyprint">
-				&lt;script&gt;
-					// jQuery ready event
-					$(function() {
-						$('.target').tabComplete({
-							list: [
-								'list',
-								'of',
-								'words',
-								'to',
-								'complete'
-							] 
-						});
-					});
-				&lt;/script&gt;
-				</pre>
-			</div>
-		</section>
-		<section id="download" class="row">
-			<div class="col-sm-12">
-				<h2 class="page-header text-center">
-					Download
-				</h2>
-				<div class="text-center">
-					<div class="btns">
-					<a href="https://github.com/erming/tabComplete/archive/0.2.4.zip" class="btn btn-lg btn-success">
-						Download tabComplete
-					</a>
-					<a href="https://github.com/erming/tabComplete" target="_blank" class="btn btn-lg btn-default">
-						View on GitHub
-					</a>
-					</div>
-					<p id="version">version 0.2.4</p>
-					<p id="author">
-						Created by
-						<a href="http://github.com/erming" target="_blank">Mattias Erming</a>
-					</p>
-				</div>
-			</div>
-		</section>
+	<div id="demo">
+		<input id="input">
 	</div>
 	
-	<script src="//cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js"></script>
 	<script src="//code.jquery.com/jquery-2.1.0.min.js"></script>
 	<script src="jquery.tabComplete.js"></script>
-	<script>
+	<script type="text/javascript">
 	$(function() {
-		$("pre").each(function() {
-			// Strip tabs from <pre> elements
-			$(this).html($(this).html().replace(/^\t{4}/, "").replace(/\n\t{4}/g, "\n"));
-		});
-			
-		prettyPrint();
-		
-		// Example function to be used by tabConplete.
-		var match = function(str) {
-			var words = [
-				"arts",
-				"artsy",
-				"artwork"
-			];
-			var match = [];
-			$.each(words, function(i, w) {
-				if (0 == w.indexOf(str)) {
-					match.push(w);
-				}
-			});
-			return match;
-		};
-		
-		$("#input").tabComplete({
-			after: "",
-			caseSensitive: false,
-			list: [
-				"artist",
-				"artistic",
-				"artistically",
-				"artistry",
-				match // Here!
-			],
-		});
-		
-		$("form").on("submit", function() {
-			return false;
-		});
+		$("#input").tabComplete();
 	});
 	</script>
 	

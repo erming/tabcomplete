@@ -1,56 +1,13 @@
+* {
+	box-sizing: border-box;
+}
 body {
-	margin: 10px 0 50px;
+	margin: 80px 0;
 }
-pre {
-	overflow-x: auto;
-	word-wrap: normal;
-	-moz-tab-size: 4;
-	     tab-size: 4;
+#demo {
+	margin: 0 auto;
+	width: 200px;
 }
-.form-control:focus {
-	border-color: #ccc;
-	box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
-	outline: 0;
-}
-#content {
-	max-width: 620px;
-}
-#download .btn {
-	margin: 0 5px;
-}
-#version {
-	color: #bbb;
-	margin-top: 10px;
-	text-align: center;
-}
-#author {
-	margin-top: 2em;
-}
-
-.com { color: #93a1a1; }
-.lit { color: #195f91; }
-.pun, .opn, .clo { color: #93a1a1; }
-.fun { color: #dc322f; }
-.str, .atv { color: #D14; }
-.kwd, .prettyprint .tag { color: #1e347b; }
-.typ, .atn, .dec, .var { color: teal; }
-.pln { color: #48484c; }
-.prettyprint {
-	padding: 9.5px;
-	background-color: #f7f7f9;
-	border: 1px solid #e1e1e8;
-}
-.prettyprint.linenums {
-	-webkit-box-shadow: inset 40px 0 0 #fbfbfc, inset 41px 0 0 #ececf0;
-	   -moz-box-shadow: inset 40px 0 0 #fbfbfc, inset 41px 0 0 #ececf0;
-		box-shadow: inset 40px 0 0 #fbfbfc, inset 41px 0 0 #ececf0;
-}
-ol.linenums {
-	margin: 0 0 0 33px;
-}
-ol.linenums li {
-	padding-left: 12px;
-	color: #bebec5;
-	line-height: 20px;
-	text-shadow: 0 1px 0 #fff;
+#demo input {
+	width: 200px;
 }
