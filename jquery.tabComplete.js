@@ -9,13 +9,15 @@
  */
 (function($) {
 	$.fn.tabComplete = function(args, options) {
+		// Set default options.
 		options = $.extend({
-			after: "",
-			caseSensitive: false,
+			after: ""
 		}, options);
 		
 		var self = this;
 		if (self.length > 1) {
+			// If the jQuery object is a collection of objects, iterate
+			// them and call .tabComplete() on each item.
 			return self.each(function() {
 				$(this).tabComplete(args, options);
 			});
@@ -31,36 +33,42 @@
 		self.on("input.tabComplete", function() {
 			var input = self.val();
 			var word = input.split(" ").pop();
-			
 			if (!word) {
 				i = 0;
 				words = [];
 			} else if (typeof args === "function") {
+				// If the user supplies a function, invoke it
+				// and keep the result.
 				words = args(word);
 			} else {
-				words = $.grep(args, function(w) {
-					if (!options.caseSensitive) {
-						return 0 === w.toLowerCase().indexOf(word.toLowerCase());
-					} else {
-						return 0 === w.indexOf(word);
-					}
-				});
+				// Otherwise, we'll call the .match() function.
+				words = match(args, word);
 			}
 		});
 		
 		self.on("keydown.tabComplete", function(e) {
 			var key = e.which;
 			if (key == 9) {
-				var input = self.val();
-				var word = words[i++ % words.length];
+				e.preventDefault();
 				
-				if (word) {
-					self.val(input.trim().split(" ").slice(0, -1).concat(word).join(" ")
-						+ options.after);
+				// Get next match.
+				var word = words[i++ % words.length];
+				if (!word) {
+					return;
 				}
 				
-				return false;
+				// Replace the last word in the input.
+				var text = self.val().trim().replace(/[^ ]*$/, word) + options.after;
+				self.val(text);
 			}
 		});
+		
+		return this;
+	}
+	
+	// Simple matching.
+	// Filter the array and return the items that beings with word.
+	function match(array, word) {
+		return $.grep(array, function(w) { return w.indexOf(word) == 0; });
 	}
 })(jQuery);
