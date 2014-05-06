@@ -8,19 +8,59 @@
  * Version 0.2.4
  */
 (function($) {
-	$.fn.tabComplete = function(words, options) {
-		return this.each(function() {
-			tabComplete.call(this, words, options);
-		});
-	};
-	
-	function tabComplete(words, options) {
+	$.fn.tabComplete = function(args, options) {
 		options = $.extend({
-			// ..
+			after: "",
+			caseSensitive: false,
 		}, options);
 		
-		$(this).on("keydown.tabComplete", function(e) {
-			console.log(e.which);
+		var self = this;
+		if (self.length > 1) {
+			return self.each(function() {
+				$(this).tabComplete(args, options);
+			});
+		}
+		
+		// Unbind namespace.
+		// This allows us to override the plugin if necessary.
+		self.unbind(".tabComplete");
+		
+		var i = 0;
+		var words = [];
+		
+		self.on("input.tabComplete", function() {
+			var input = self.val();
+			var word = input.split(" ").pop();
+			
+			if (!word) {
+				i = 0;
+				words = [];
+			} else if (typeof args === "function") {
+				words = args(word);
+			} else {
+				words = $.grep(args, function(w) {
+					if (!options.caseSensitive) {
+						return 0 === w.toLowerCase().indexOf(word.toLowerCase());
+					} else {
+						return 0 === w.indexOf(word);
+					}
+				});
+			}
+		});
+		
+		self.on("keydown.tabComplete", function(e) {
+			var key = e.which;
+			if (key == 9) {
+				var input = self.val();
+				var word = words[i++ % words.length];
+				
+				if (word) {
+					self.val(input.trim().split(" ").slice(0, -1).concat(word).join(" ")
+						+ options.after);
+				}
+				
+				return false;
+			}
 		});
 	}
 })(jQuery);
