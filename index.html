@@ -14,6 +14,7 @@
 	<body>
 	
 	<div id="demo">
+		<p>Type <kbd>a</kbd> and press <kbd>tab</kbd> multiple times</p>
 		<input id="input">
 	</div>
 	
@@ -21,7 +22,12 @@
 	<script src="jquery.tabComplete.js"></script>
 	<script type="text/javascript">
 	$(function() {
-		$("#input").tabComplete(["foo", "bar", "foobar"]);
+		$("#input").tabComplete([
+			"almighty",
+			"artsy",
+			"afterwork",
+			"assets",
+		]);
 	});
 	</script>
 	

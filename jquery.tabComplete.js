@@ -9,31 +9,37 @@
  */
 (function($) {
 	var defaults = {
-		after: ""
+		after: "",
+		hint: true,
 	};
 	
 	$.fn.tabComplete = function(args, options) {
+		var self = this;
 		options = $.extend(
 			{}, defaults, options
 		);
 		
-		var self = this;
-		if (self.length > 1) {
+		if (this.length > 1) {
 			// If the jQuery object is a collection of objects, iterate
 			// them and call .tabComplete() on each item.
-			return self.each(function() {
+			return this.each(function() {
 				$(this).tabComplete(args, options);
 			});
 		}
 		
+		// Lets turn on the input hinting if allowed to.
+		if (options.hint) {
+			hint.call(self);
+		}
+		
 		// Unbind namespace.
 		// This allows us to override the plugin if necessary.
-		self.unbind(".tabComplete");
+		this.unbind(".tabComplete");
 		
 		var i = 0;
 		var words = [];
 		
-		self.on("input.tabComplete", function() {
+		this.on("input.tabComplete", function() {
 			var input = self.val();
 			var word = input.split(" ").pop();
 			if (!word) {
@@ -47,11 +53,16 @@
 				// Otherwise, call the .match() function.
 				words = match(args, word);
 			}
+			
+			if (options.hint) {
+				hint.call(self, words[0]);
+			}
 		});
 		
-		self.on("keydown.tabComplete", function(e) {
-			var key = e.which;
+		this.on("keydown.tabComplete", function(e) {
+			var key = e.which; 
 			if (key == 9) {
+				// Don't lose focus on tab click.
 				e.preventDefault();
 				
 				// Get next match.
@@ -60,9 +71,15 @@
 					return;
 				}
 				
-				// Replace the last word in the input.
-				var text = self.val().trim().replace(/[^ ]*$/, word);
-				self.val(text + options.after);
+				self.val(
+					self.val().trim()
+						.replace(/[^ ]*$/, word) // Replace last word.
+							+ options.after
+				);
+				
+				if (options.hint) {
+					hint.call(self, word);
+				}
 			}
 		});
 		
@@ -78,5 +95,38 @@
 				return w.indexOf(word) == 0;
 			}
 		);
+	}
+
+	// Add input hinting.
+	// This works by creating a copy of the input and placing it behind
+	// the real input.
+	function hint(word) {
+		var input = this;
+		var clone = input.prev(".hint");
+		
+		input.css({
+			backgroundColor: "transparent",
+			position: "relative",
+		});
+		
+		// Let's create the clone input if it does
+		// not already exist.
+		if (!clone.length) {
+			input.wrap(
+				$("<div>").css({position: "relative"})
+			);
+			clone = input
+				.clone()
+				.prop("disabled", true)
+				.removeAttr("id name placeholder")
+				.addClass("hint")
+				.insertBefore(input);
+			clone.css({
+				position: "absolute",
+			});
+		}
+		
+		// Update the hint.
+		clone.val(word);
 	}
 })(jQuery);
