@@ -5,14 +5,17 @@
  * Copyright (c) 2014 Mattias Erming <mattias@mattiaserming.com>
  * Licensed under the MIT License.
  *
- * Version 0.2.4
+ * Version 1.0.0-alpha1
  */
 (function($) {
+	var defaults = {
+		after: ""
+	};
+	
 	$.fn.tabComplete = function(args, options) {
-		// Set default options.
-		options = $.extend({
-			after: ""
-		}, options);
+		options = $.extend(
+			{}, defaults, options
+		);
 		
 		var self = this;
 		if (self.length > 1) {
@@ -41,7 +44,7 @@
 				// and keep the result.
 				words = args(word);
 			} else {
-				// Otherwise, we'll call the .match() function.
+				// Otherwise, call the .match() function.
 				words = match(args, word);
 			}
 		});
@@ -58,8 +61,8 @@
 				}
 				
 				// Replace the last word in the input.
-				var text = self.val().trim().replace(/[^ ]*$/, word) + options.after;
-				self.val(text);
+				var text = self.val().trim().replace(/[^ ]*$/, word);
+				self.val(text + options.after);
 			}
 		});
 		
@@ -67,8 +70,13 @@
 	}
 	
 	// Simple matching.
-	// Filter the array and return the items that beings with word.
+	// Filter the array and return the items that begins with word.
 	function match(array, word) {
-		return $.grep(array, function(w) { return w.indexOf(word) == 0; });
+		return $.grep(
+			array,
+			function(w) {
+				return w.indexOf(word) == 0;
+			}
+		);
 	}
 })(jQuery);
