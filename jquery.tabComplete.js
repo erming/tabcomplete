@@ -27,8 +27,8 @@
 			});
 		}
 		
-		// Lets turn on the input hinting if allowed to.
 		if (options.hint) {
+			// Lets turn on hinting.
 			hint.call(self);
 		}
 		
@@ -38,13 +38,16 @@
 		
 		var i = 0;
 		var words = [];
+		var last = "";
 		
-		this.on("input.tabComplete", function() {
+		this.on("input.tabComplete", function(e) {
 			var input = self.val();
 			var word = input.split(" ").pop();
+			
 			if (!word) {
 				i = 0;
 				words = [];
+				last = "";
 			} else if (typeof args === "function") {
 				// If the user supplies a function, invoke it
 				// and keep the result.
@@ -71,14 +74,21 @@
 					return;
 				}
 				
+				var input = self.val().trim();
+				last = last || input.split(" ").pop();
+				
 				self.val(
-					self.val().trim()
-						.replace(/[^ ]*$/, word) // Replace last word.
+					input.substr(0, input.lastIndexOf(last))
+							+ word
 							+ options.after
 				);
 				
+				// Remember the word until next time.
+				last = word;
+				
 				if (options.hint) {
-					hint.call(self, word);
+					// Turn off any additional hinting.
+					hint.call(self);
 				}
 			}
 		});
@@ -87,12 +97,12 @@
 	}
 	
 	// Simple matching.
-	// Filter the array and return the items that begins with word.
+	// Filter the array and return the items that begins with `word`.
 	function match(array, word) {
 		return $.grep(
 			array,
 			function(w) {
-				return w.indexOf(word) == 0;
+				return !w.toLowerCase().indexOf(word.toLowerCase());
 			}
 		);
 	}
@@ -109,7 +119,7 @@
 			position: "relative",
 		});
 		
-		// Let's create the clone input if it does
+		// Lets create a clone of the input if it does
 		// not already exist.
 		if (!clone.length) {
 			input.wrap(
@@ -126,7 +136,13 @@
 			});
 		}
 		
-		// Update the hint.
-		clone.val(word);
+		var hint = "";
+		if (typeof word !== "undefined") {
+			var value = input.val().substr(0, input.val().lastIndexOf(" "));
+			hint = (value ? value + " " : "")
+					+ word;
+		}
+		
+		clone.val(hint);
 	}
 })(jQuery);
