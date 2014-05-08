@@ -20,8 +20,6 @@
 		);
 		
 		if (this.length > 1) {
-			// If the jQuery object is a collection of objects, iterate
-			// them and call .tabComplete() on each item.
 			return this.each(function() {
 				$(this).tabComplete(args, options);
 			});
@@ -29,7 +27,7 @@
 		
 		if (options.hint) {
 			// Lets turn on hinting.
-			hint.call(self);
+			hint.call(self, "");
 		}
 		
 		// Unbind namespace.
@@ -88,7 +86,7 @@
 				
 				if (options.hint) {
 					// Turn off any additional hinting.
-					hint.call(self);
+					hint.call(self, "");
 				}
 			}
 		});
@@ -138,11 +136,15 @@
 		
 		var hint = "";
 		if (typeof word !== "undefined") {
-			var value = input.val().substr(0, input.val().lastIndexOf(" "));
-			hint = (value ? value + " " : "")
-					+ word;
+			var text = input.val();
+			hint = text + word.substr(last(text).length);
 		}
 		
 		clone.val(hint);
+	}
+
+	// Get the last word of a string.
+	function last(str) {
+		return str.split(" ").pop();
 	}
 })(jQuery);
