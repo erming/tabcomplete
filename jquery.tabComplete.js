@@ -40,7 +40,7 @@
 		
 		this.on("input.tabComplete", function(e) {
 			var input = self.val();
-			var word = input.split(" ").pop();
+			var word = input.split(/ |\n/).pop();
 			
 			if (!word) {
 				i = 0;
@@ -73,7 +73,7 @@
 				}
 				
 				var input = self.val().trim();
-				last = last || input.split(" ").pop();
+				last = last || input.split(/ |\n/).pop();
 				
 				self.val(
 					input.substr(0, input.lastIndexOf(last))
@@ -145,6 +145,6 @@
 
 	// Get the last word of a string.
 	function last(str) {
-		return str.split(" ").pop();
+		return str.split(/ |\n/).pop();
 	}
 })(jQuery);

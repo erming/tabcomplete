@@ -2,9 +2,19 @@
 	box-sizing: border-box;
 }
 body {
-	margin: 20% 0;
+	margin: 10% 0;
 }
-
+p {
+	line-height: 1.625;
+	margin: 0 0 10px;
+}
+h3 {
+	color: #bdc3c7;
+	font-size: 18px;
+	font-weight: normal;
+	margin: 0 0 10px;
+	text-transform: uppercase;
+}
 kbd {
 	background: #34495e;
 	border-radius: 4px;
@@ -12,25 +22,32 @@ kbd {
 	font-size: 13px;
 	padding: 2px 6px;
 }
-#demo {
-	margin: 0 auto;
-	max-width: 400px;
-	padding: 0 20px;
-	position: relative;
-}
-#demo input {
+textarea,
+input {
 	border: 2px solid #bdc3c7;
 	border-radius: 6px;
 	font: 20px Helvetica, Arial, sans-serif;
 	line-height: 1.467;
 	outline: none;
 	padding: 8px 12px;
+	resize: none;
 	transition: all .25s;
 	width: 100%;
 }
-#demo input.hint {
+textarea.hint,
+input.hint {
 	color: #bbb;
 }
-#demo input:focus {
+textarea:focus,
+input:focus {
 	border-color: #1abc9c;
+}
+#demo {
+	margin: 0 auto;
+	max-width: 400px;
+	padding: 0 20px;
+	position: relative;
+}
+#demo .section {
+	margin-bottom: 30px;
 }
