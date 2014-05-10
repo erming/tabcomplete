@@ -10,6 +10,7 @@
 (function($) {
 	var defaults = {
 		after: "",
+		caseSensitive: false,
 		hint: true,
 		minLength: 1,
 	};
@@ -53,7 +54,7 @@
 				words = args(word);
 			} else {
 				// Otherwise, call the .match() function.
-				words = match(args, word);
+				words = match(args, word, options.caseSensitive);
 			}
 			
 			if (options.hint) {
@@ -107,11 +108,15 @@
 	
 	// Simple matching.
 	// Filter the array and return the items that begins with `word`.
-	function match(array, word) {
+	function match(array, word, caseSensitive) {
 		return $.grep(
 			array,
 			function(w) {
-				return !w.toLowerCase().indexOf(word.toLowerCase());
+				if (caseSensitive) {
+					return !w.indexOf(word);
+				} else {
+					return !w.toLowerCase().indexOf(word.toLowerCase());
+				}
 			}
 		);
 	}
