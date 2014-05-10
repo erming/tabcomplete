@@ -11,6 +11,7 @@
 	var defaults = {
 		after: "",
 		hint: true,
+		minLength: 1,
 	};
 	
 	$.fn.tabComplete = function(args, options) {
@@ -56,7 +57,13 @@
 			}
 			
 			if (options.hint) {
-				hint.call(self, words[0]);
+				if (word.length >= options.minLength) {
+					hint.call(self, words[0]);
+				} else {
+					// Clear hinting.
+					// This call is needed when using backspace.
+					hint.call(self, "");
+				}
 			}
 		});
 		
@@ -74,6 +81,10 @@
 				
 				var input = self.val().trim();
 				last = last || input.split(/ |\n/).pop();
+				
+				if (last.length < options.minLength) {
+					return;
+				}
 				
 				self.val(
 					input.substr(0, input.lastIndexOf(last))
