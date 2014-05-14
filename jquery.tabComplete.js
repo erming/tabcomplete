@@ -58,7 +58,7 @@
 			}
 			
 			if (options.hint) {
-				if (word.length >= options.minLength) {
+				if (word.length >= options.minLength && words.length) {
 					hint.call(self, words[0]);
 				} else {
 					// Clear hinting.
@@ -69,7 +69,7 @@
 		});
 		
 		this.on("keydown.tabComplete", function(e) {
-			var key = e.which; 
+			var key = e.which;
 			if (key == 9) {
 				// Don't lose focus on tab click.
 				e.preventDefault();
@@ -153,14 +153,9 @@
 		var hint = "";
 		if (typeof word !== "undefined") {
 			var text = input.val();
-			hint = text + word.substr(last(text).length);
+			hint = text + word.substr(text.split(/ |\n/).pop().length);
 		}
 		
 		clone.val(hint);
-	}
-
-	// Get the last word of a string.
-	function last(str) {
-		return str.split(/ |\n/).pop();
 	}
 })(jQuery);
