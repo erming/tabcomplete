@@ -13,6 +13,7 @@
 		caseSensitive: false,
 		hint: true,
 		minLength: 1,
+		onTabComplete: $.noop,
 	};
 	
 	$.fn.tabComplete = function(args, options) {
@@ -95,6 +96,9 @@
 				
 				// Remember the word until next time.
 				last = word;
+				
+				// Trigger callback.
+				options.onTabComplete(last);
 				
 				if (options.hint) {
 					// Turn off any additional hinting.
