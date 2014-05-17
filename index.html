@@ -7,26 +7,39 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
-	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/3.0.1/normalize.min.css">
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="style.css">
 	
 	</head>
 	<body>
 	
-	<div id="demo">
-		<section class="section">
-			<p>
-				Welcome to tabComplete.<br>
-				Type something and then complete the words by typing <kbd>tab</kbd>. Go ahead and try!
-			</p>
+	<div id="wrap" class="container">
+		<section id="header" class="row">
+			<div class="col-sm-12">
+				<input id="logo" value="">
+			</div>
 		</section>
-		<section class="section">
-			<h3>Input</h3>
-			<input id="input">
+		<section id="intro" class="row">
+			<div class="col-sm-12">
+				<p>
+					Welcome to tabComplete.<br>
+					Type something and then complete the words by typing <kbd>tab</kbd>. Go ahead and try!
+				</p>
+			</div>
 		</section>
-		<section class="section">
-			<h3>Textarea</h3>
-			<textarea id="textarea" rows="4"></textarea>
+		<section id="demo">
+			<div class="row">
+				<div class="col-sm-12">
+					<h3>Input</h3>
+					<input id="input">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12">
+					<h3>Textarea</h3>
+					<textarea id="textarea" rows="4"></textarea>
+				</div>
+			</div>
 		</section>
 	</div>
 	
@@ -34,7 +47,7 @@
 	<script src="jquery.tabComplete.js"></script>
 	<script type="text/javascript">
 	$(function() {
-		var countries = [ 
+		$("#input, #textarea").tabComplete([ 
 			"Afghanistan",
 			"Albania",
 			"Algeria",
@@ -250,9 +263,31 @@
 			"Yemen",
 			"Zambia",
 			"Zimbabwe",
-		];
+		]);
 		
-		$("#input, #textarea").tabComplete(countries);
+		// Simulate user input.
+		var logo = $("#logo").tabComplete(["tabComplete"]);
+		setTimeout(function() {
+			logo.val("t").trigger("input");
+		}, 400);
+		setTimeout(function() {
+			logo.val("ta").trigger("input");
+		}, 700);
+		setTimeout(function() {
+			logo.val("tab").trigger("input");
+		}, 1000);
+		setTimeout(function() {
+			logo.trigger({
+				type: "keydown",
+				which: 9,
+			});
+		}, 1800);
+		setTimeout(function() {
+			logo.trigger({
+				type: "keydown",
+				which: 9,
+			});
+		}, 2700);
 	});
 	</script>
 	
