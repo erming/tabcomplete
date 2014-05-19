@@ -31,6 +31,7 @@
 			<div class="row">
 				<div class="col-sm-12">
 					<h3>Input</h3>
+					<div id="matches" style="opacity: 0;"><span>0</span> matches</div>
 					<input id="input">
 				</div>
 			</div>
@@ -265,29 +266,29 @@
 			"Zimbabwe",
 		]);
 		
+		// Render # of matches.
+		var matches = $("#matches");
+		$("#input").on("match", function(e, num) {
+			matches.css("opacity", num == 0 ? 0 : 1).find("span").html(num);
+		});
+		
 		// Simulate user input.
 		var logo = $("#logo").tabComplete(["tabComplete"]);
 		setTimeout(function() {
 			logo.val("t").trigger("input");
-		}, 400);
+		}, 0);
 		setTimeout(function() {
 			logo.val("ta").trigger("input");
-		}, 700);
-		setTimeout(function() {
-			logo.val("tab").trigger("input");
 		}, 1000);
 		setTimeout(function() {
-			logo.trigger({
-				type: "keydown",
-				which: 9,
-			});
-		}, 1800);
+			logo.val("tab").trigger("input");
+		}, 1500);
 		setTimeout(function() {
 			logo.trigger({
 				type: "keydown",
 				which: 9,
 			});
-		}, 2700);
+		}, 2500);
 	});
 	</script>
 	

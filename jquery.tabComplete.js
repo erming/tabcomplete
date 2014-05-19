@@ -58,6 +58,9 @@
 				words = match(args, word, options.caseSensitive);
 			}
 			
+			// Emit the number of matching words with the 'match' event.
+			self.trigger("match", words.length);
+			
 			if (options.hint) {
 				if (word.length >= options.minLength && words.length) {
 					hint.call(self, words[0]);
@@ -99,6 +102,9 @@
 				
 				// Trigger callback.
 				options.onTabComplete(last);
+				
+				// Trigger the 'tabComplete' event on a successful complete.
+				self.trigger("tabComplete", last);
 				
 				if (options.hint) {
 					// Turn off any additional hinting.

@@ -66,6 +66,16 @@ kbd {
 #demo .section {
 	margin-bottom: 30px;
 }
+#demo #matches {
+	color: #bdc3c7;
+	font-size: 12px;
+	font-family: monospace;
+	margin-top: 17px;
+	position: absolute;
+	right: 33px;
+	text-transform: uppercase;
+	transition: all .3s;
+}
 
 @media (max-width: 768px) {
 	#wrap {
