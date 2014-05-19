@@ -1,0 +1,27 @@
+{
+	"name": "tabComplete",
+	"version": "1.0.0-alpha2",
+	"title": "tabComplete",
+	"description": "Lightweight tab completion for inputs",
+	"keywords": [
+		"tab",
+		"complete",
+		"hint",
+		"hinting",
+		"input",
+		"textarea"
+	],
+	"homepage": "https://github.com/erming/tabComplete",
+	"demo": "https://erming.github.io/tabComplete",
+	"author": {
+		"name": "Mattias Erming",
+		"url": "http://github.com/erming"
+	},
+	"licenses": [{
+		"type": "MIT",
+		"url": "http://mths.be/mit"
+	}],
+	"dependencies": {
+		"jquery": ">=1.9"
+	}
+}

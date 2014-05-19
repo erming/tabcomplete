@@ -13,7 +13,7 @@
 		caseSensitive: false,
 		hint: true,
 		minLength: 1,
-		onTabComplete: $.noop,
+		onTabComplete: $.noop
 	};
 	
 	$.fn.tabComplete = function(args, options) {
