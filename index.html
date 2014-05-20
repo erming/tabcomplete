@@ -355,6 +355,8 @@
 		input.on("match", function(e, num) {
 			matches.css("opacity", num == 0 ? 0 : 1).find("span").html(num);
 		});
+		
+		input.focus();
 	});
 	</script>
 	

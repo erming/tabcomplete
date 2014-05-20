@@ -1,6 +1,6 @@
 {
   "name": "tabComplete",
-  "version": "1.0.0-alpha2",
+  "version": "1.0.0",
   "homepage": "https://github.com/erming/tabComplete",
   "authors": [
     "Mattias Erming <mattias@mattiaserming.com>"
@@ -22,6 +22,7 @@
   "ignore": [
     "index.html",
     "tabComplete.jquery.json",
+    "package.json",
     "style.css"
   ]
 }

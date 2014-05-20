@@ -1,6 +1,6 @@
 {
 	"name": "tabComplete",
-	"version": "1.0.0-alpha2",
+	"version": "1.0.0",
 	"title": "tabComplete",
 	"description": "Lightweight tab completion for inputs",
 	"keywords": [

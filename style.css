@@ -83,26 +83,27 @@ h3 {
 	margin-top: 40px;
 }
 #code pre {
+	-moz-tab-size: 4;
+	     tab-size: 4;
 	background-color: #f7f9fa;
 	border-color: #e9ecef;
 	border-width: 2px;
-	-moz-tab-size: 4;
-	     tab-size: 4;
+	word-wrap: normal;
 }
 #download {
 	text-align: center;
 }
 #download a {
 	border: 2px solid #1abc9c;
-	color: #1abc9c;
 	border-radius: 5px;
+	color: #1abc9c;
 	display: inline-block;
 	font: bold 12px Lato, sans-serif;
 	letter-spacing: 1px;
-	padding: 12px 0;
+	padding: 12px 16px;
 	text-transform: uppercase;
 	transition: all .1s;
-	width: 140px;
+	word-spacing: 3px;
 }
 #download a:hover {
 	background: #1abc9c;
@@ -112,6 +113,9 @@ h3 {
 #download a:active {
 	background: #16a085;
 	border-color: #16a085;
+}
+#download a + a {
+	margin-left: 5px;
 }
 #download hr {
 	margin-bottom: 40px;
