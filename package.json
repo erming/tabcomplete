@@ -1,0 +1,24 @@
+{
+  "name": "tabComplete",
+  "version": "1.0.0",
+  "description": "Lightweight tab completion for inputs",
+  "main": "jquery.tabComplete.js",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/erming/tabComplete"
+  },
+  "homepage": "https://github.com/erming/tabComplete",
+  "keywords": [
+    "tab",
+    "complete",
+    "hint",
+    "hinting",
+    "input",
+    "textarea"
+  ],
+  "dependencies": {
+    "jquery": ">=1.9"
+  },
+  "author": "Mattias Erming",
+  "license": "MIT"
+}
