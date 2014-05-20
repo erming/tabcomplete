@@ -1,13 +1,9 @@
-@import url(http://fonts.googleapis.com/css?family=Lato:700);
+@import url(http://fonts.googleapis.com/css?family=Lato:400,700);
 
-* {
-	box-sizing: border-box;
-}
-html,
 body {
 	background: #fff;
 	font: 16px sans-serif;
-	margin: 0;
+	margin: 0 0 60px;
 }
 p {
 	line-height: 1.625;
@@ -20,15 +16,19 @@ kbd {
 	font-size: 13px;
 	padding: 2px 6px;
 }
+.container {
+	margin: 0 auto;
+	max-width: 400px;
+}
 .row {
 	margin-bottom: 20px;
 }
 .hint {
-	color: #bbb;
+	color: #bdc3c7;
 }
-#wrap {
-	margin: 60px auto;
-	max-width: 400px;
+#header {
+	margin-top: 60px;
+	transition: all .3s;
 }
 #header input {
 	border: 0;
@@ -36,6 +36,9 @@ kbd {
 	margin: 0;
 	outline: 0;
 	width: 100%;
+}
+#header #logo-input {
+	color: #34495e;
 }
 #demo {
 	position: relative;
@@ -76,12 +79,61 @@ kbd {
 	text-transform: uppercase;
 	transition: all .3s;
 }
+#download {
+	text-align: center;
+}
+#download a {
+	border: 2px solid #1abc9c;
+	color: #1abc9c;
+	border-radius: 5px;
+	display: inline-block;
+	font: bold 12px Lato, sans-serif;
+	letter-spacing: 1px;
+	padding: 12px 0;
+	text-transform: uppercase;
+	transition: all .1s;
+	width: 140px;
+}
+#download a:hover {
+	background: #1abc9c;
+	color: #fff;
+	text-decoration: none;
+}
+#download a:active {
+	background: #16a085;
+	border-color: #16a085;
+}
+#download hr {
+	margin-bottom: 40px;
+}
+#footer {
+	line-height: 1.3em;
+	margin-top: 40px;
+	text-align: center;
+	text-transform: uppercase;
+}
+#footer a {
+	color: inherit;
+	text-decoration: none;
+}
+#footer a:hover {
+	color: #1abc9c;
+}
+#footer small {
+	color: #bec5d0;
+	font: 12px Lato, sans-serif;
+	word-spacing: 2px;
+}
 
 @media (max-width: 768px) {
-	#wrap {
-		margin: 30px auto;
+	#header {
+		margin-top: 30px;
 	}
 	#header input {
 		font-size: 44px;
+		padding: 0;
+	}
+	#fork {
+		display: none;
 	}
 }
