@@ -74,7 +74,7 @@
 		
 		this.on("keydown.tabComplete", function(e) {
 			var key = e.which;
-			if (key == 9) {
+			if (key == 9 || key == 40) { 
 				// Don't lose focus on tab click.
 				e.preventDefault();
 				
