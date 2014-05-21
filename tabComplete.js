@@ -14,35 +14,34 @@
 		down: 40
 	};
 	
-	var defaults = {
-		after: "",
-		caseSensitive: false,
-		hint: true,
-		minLength: 1,
-		onTabComplete: $.noop
-	};
-	
 	$.fn.tabComplete = function(args, options) {
-		var self = this;
-		options = $.extend(
-			{}, defaults, options
-		);
-		
 		if (this.length > 1) {
 			return this.each(function() {
 				$(this).tabComplete(args, options);
 			});
 		}
 		
-		if (options.hint) {
-			// Lets turn on hinting.
-			hint.call(self, "");
+		// Only enable the plugin on <input> and <textarea> elements.
+		var tag = this.prop("tagName");
+		if (tag != "INPUT" && tag != "TEXTAREA") {
+			return;
 		}
+		
+		// Set default options.
+		options = $.extend({
+			after: "",
+			arrowKeys: tag == "INPUT" ? true : false,
+			caseSensitive: false,
+			hint: true,
+			minLength: 1,
+			onTabComplete: $.noop
+		}, options);
 		
 		// Unbind namespace.
 		// This allows us to override the plugin if necessary.
 		this.unbind(".tabComplete");
 		
+		var self = this;
 		var i = -1;
 		var words = [];
 		var last = "";
@@ -80,7 +79,7 @@
 		
 		this.on("keydown.tabComplete", function(e) {
 			var key = e.which;
-			if (key == keys.tab || key == keys.up || key == keys.down) { 
+			if (key == keys.tab || (options.arrowKeys && (key == keys.up || key == keys.down))) { 
 				// Don't lose focus on tab click.
 				e.preventDefault();
 				
@@ -133,6 +132,11 @@
 			}
 		});
 		
+		if (options.hint) {
+			// If enabled, turn on hinting.
+			hint.call(this, "");
+		}
+		
 		return this;
 	}
 	
@@ -151,7 +155,7 @@
 		);
 	}
 
-	// Set input hinting.
+	// Input hinting.
 	// This works by creating a copy of the input and placing it behind
 	// the real input.
 	function hint(word) {

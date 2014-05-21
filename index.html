@@ -97,12 +97,14 @@
 	</a>
 	
 	<script src="//cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js"></script>
-	<script>prettyPrint();</script>
 	
-	<script src="//code.jquery.com/jquery-2.1.0.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script src="tabComplete.js"></script>
-	<script type="text/javascript">
+	<script>
 	$(function() {
+		// Oooh! Fancy!
+		prettyPrint();
+		
 		$("#input, #textarea").tabComplete([ 
 			"Afghanistan",
 			"Albania",
@@ -329,7 +331,7 @@
 		input.on(
 			"match",
 			function(e, num) {
-				matches.css("opacity", num == 0 ? 0 : 1).find("span").html(num);
+				matches.css("opacity", (num == 0 ? 0 : 1)).find("span").html(num);
 			}
 		);
 		
