@@ -8,6 +8,12 @@
  * Version 1.0.0
  */
 (function($) {
+	var keys = {
+		tab: 9,
+		up: 38,
+		down: 40
+	};
+	
 	var defaults = {
 		after: "",
 		caseSensitive: false,
@@ -37,7 +43,7 @@
 		// This allows us to override the plugin if necessary.
 		this.unbind(".tabComplete");
 		
-		var i = 0;
+		var i = -1;
 		var words = [];
 		var last = "";
 		
@@ -46,7 +52,7 @@
 			var word = input.split(/ |\n/).pop();
 			
 			if (!word) {
-				i = 0;
+				i = -1;
 				words = [];
 				last = "";
 			} else if (typeof args === "function") {
@@ -74,12 +80,26 @@
 		
 		this.on("keydown.tabComplete", function(e) {
 			var key = e.which;
-			if (key == 9 || key == 40) { 
+			if (key == keys.tab || key == keys.up || key == keys.down) { 
 				// Don't lose focus on tab click.
 				e.preventDefault();
 				
+				// Iterate the matches with tab and the up and down keys by incrementing
+				// or decrementing the 'i' variable.
+				if (key != keys.up) {
+					i++;
+				} else {
+					if (i == -1) return;
+					if (i == 0) {
+						// Jump to the last word.
+						i = words.length - 1;
+					} else {
+						i--;
+					}
+				}
+					
 				// Get next match.
-				var word = words[i++ % words.length];
+				var word = words[i % words.length];
 				if (!word) {
 					return;
 				}
@@ -131,7 +151,7 @@
 		);
 	}
 
-	// Add input hinting.
+	// Set input hinting.
 	// This works by creating a copy of the input and placing it behind
 	// the real input.
 	function hint(word) {
