@@ -6,8 +6,8 @@ A GitHub-hosted demo can be found here:
 ## Install
 
 Manual install:  
-- Download [tabComplete.js](https://raw.githubusercontent.com/erming/tabComplete/gh-pages/tabComplete.js)
-- Include source: `<script src="tabComplete.js"></script>`
+  1. Download [tabComplete.js](https://raw.githubusercontent.com/erming/tabComplete/gh-pages/tabComplete.js)
+  2. Include source: `<script src="tabComplete.js"></script>`
 
 
 With Bower:  
