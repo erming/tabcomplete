@@ -5,8 +5,8 @@
   "authors": [
     "Mattias Erming <mattias@mattiaserming.com>"
   ],
-  "description": "Lightweight tab completion for inputs",
-  "main": "jquery.tabComplete.js",
+  "description": "Lightweight tab completion for <input> and <textarea>",
+  "main": "tabComplete.js",
   "keywords": [
     "tab",
     "complete",
@@ -22,7 +22,6 @@
   "ignore": [
     "index.html",
     "tabComplete.jquery.json",
-    "package.json",
     "style.css"
   ]
 }

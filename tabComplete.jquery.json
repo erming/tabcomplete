@@ -2,7 +2,7 @@
 	"name": "tabComplete",
 	"version": "1.0.0",
 	"title": "tabComplete",
-	"description": "Lightweight tab completion for inputs",
+	"description": "Lightweight tab completion for <input> and <textarea>",
 	"keywords": [
 		"tab",
 		"complete",

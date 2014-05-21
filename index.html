@@ -13,16 +13,12 @@
 	</head>
 	<body>
 	
-	<div id="header">
-		<div class="container">
-			<section id="logo" class="row">
-				<div class="col-sm-12">
-					<input id="logo-input" value="">
-				</div>
-			</section>
-		</div>
-	</div>
 	<div class="container">
+		<section id="header" class="row">
+			<div class="col-sm-12">
+				<h1>tabComplete</h1>
+			</div>
+		</section>
 		<section id="intro" class="row">
 			<div class="col-sm-12">
 				<p>
@@ -56,20 +52,20 @@
 						Example usage
 					</h3>
 					<pre class="prettyprint">
-					&lt;script src="jquery.js"&gt;&lt;/script&gt;
-					&lt;script src="jquery.tabComplete.js"&gt;&lt;/script&gt;
-					&lt;script&gt;
-						// jQuery ready event
-						$(function() {
-							$("#target").tabComplete([
-								"array",
-								"with",
-								"words",
-								"to",
-								"complete"
-							]);
-						});
-					&lt;/script&gt;
+&lt;script src="jquery.js"&gt;&lt;/script&gt;
+&lt;script src="tabComplete.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+	// jQuery ready event
+	$(function() {
+		$("#target").tabComplete([
+			"array",
+			"with",
+			"words",
+			"to",
+			"complete"
+		]);
+	});
+&lt;/script&gt;
 					</pre>
 				</div>
 			</div>
@@ -78,7 +74,7 @@
 			<div class="row">
 				<div class="col-sm-12">
 					<hr>
-					<a href="https://github.com/erming/tabComplete">
+					<a href="https://github.com/erming/tabComplete/archive/1.0.0.zip">
 						Download
 					</a>
 				</div>
@@ -104,7 +100,7 @@
 	<script>prettyPrint();</script>
 	
 	<script src="//code.jquery.com/jquery-2.1.0.min.js"></script>
-	<script src="jquery.tabComplete.js"></script>
+	<script src="tabComplete.js"></script>
 	<script type="text/javascript">
 	$(function() {
 		$("#input, #textarea").tabComplete([ 
@@ -324,37 +320,18 @@
 			"Zambia",
 			"Zimbabwe",
 		]);
-		
-		// Strip tabs from <pre> elements.
-		$("pre").each(function() {
-			$(this).html($(this).html().replace(/\t{5}/g, ""));
-		});
-		
-		// Simulate user input.
-		var logo = $("#logo-input").tabComplete(["tabComplete"]);
-		setTimeout(function() {
-			logo.val("t").trigger("input");
-		}, 0);
-		setTimeout(function() {
-			logo.val("ta").trigger("input");
-		}, 500);
-		setTimeout(function() {
-			logo.val("tab").trigger("input");
-		}, 1000);
-		setTimeout(function() {
-			logo.trigger({
-				type: "keydown",
-				which: 9,
-			});
-		}, 1500);
-		
+
 		var input = $("#input");
 		var matches = $("#matches");
 		
-		// Render # of matches.
-		input.on("match", function(e, num) {
-			matches.css("opacity", num == 0 ? 0 : 1).find("span").html(num);
-		});
+		// Listen to the 'match' event and render the
+		// number of matches.
+		input.on(
+			"match",
+			function(e, num) {
+				matches.css("opacity", num == 0 ? 0 : 1).find("span").html(num);
+			}
+		);
 		
 		input.focus();
 	});
