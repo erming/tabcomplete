@@ -178,7 +178,7 @@
 			);
 			clone = input
 				.clone()
-				.prop("disabled", true)
+				.attr("tabindex", -1)
 				.removeAttr("id name placeholder")
 				.addClass("hint")
 				.insertBefore(input);
