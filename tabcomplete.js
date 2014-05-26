@@ -1,6 +1,6 @@
 /*!
  * tabComplete
- * Lightweight tab completion for <input> and <textarea>
+ * Lightweight tab completion for inputs and textareas
  *
  * Source:
  * https://github.com/erming/tabComplete

@@ -5,8 +5,8 @@
   "authors": [
     "Mattias Erming <mattias@mattiaserming.com>"
   ],
-  "description": "Lightweight tab completion for <input> and <textarea>",
-  "main": "tabComplete.js",
+  "description": "Lightweight tab completion for inputs and textareas",
+  "main": "tabcomplete.js",
   "keywords": [
     "tab",
     "complete",
@@ -21,7 +21,7 @@
   "license": "MIT",
   "ignore": [
     "index.html",
-    "tabComplete.jquery.json",
+    "tabcomplete.jquery.json",
     "style.css"
   ]
 }
