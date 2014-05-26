@@ -12,6 +12,7 @@
  */
 (function($) {
 	var keys = {
+		backspace: 8,
 		tab: 9,
 		up: 38,
 		down: 40
@@ -53,7 +54,7 @@
 		this.on("input.tabComplete", function(e) {
 			var input = self.val();
 			var word = input.split(/ |\n/).pop();
-			
+
 			if (!word) {
 				i = -1;
 				words = [];
@@ -133,6 +134,10 @@
 					// Turn off any additional hinting.
 					hint.call(self, "");
 				}
+			} else if (e.which == keys.backspace) {
+				// Reset iteration.
+				i = -1;
+				last = "";
 			}
 		});
 		
