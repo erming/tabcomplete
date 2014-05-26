@@ -21,6 +21,7 @@
   "license": "MIT",
   "ignore": [
     "index.html",
+    "package.json",
     "tabcomplete.jquery.json",
     "style.css"
   ]
