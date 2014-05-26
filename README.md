@@ -1,21 +1,17 @@
 ## Demo
 
 A GitHub-hosted demo can be found here:  
-[View project page](http://erming.github.io/tabComplete/)
+[View project page](http://erming.github.io/tabcomplete/)
 
 ## Install
 
 Manual install:  
-  1. Download [tabComplete.js](https://raw.githubusercontent.com/erming/tabComplete/gh-pages/tabComplete.js)
-  2. Include source: `<script src="tabComplete.js"></script>`
+  1. Download [tabcomplete.js](https://raw.githubusercontent.com/erming/tabcomplete/gh-pages/tabcomplete.js)
+  2. Include source: `<script src="tabcomplete.js"></script>`
 
 
 With Bower:  
-`bower install tabComplete`
-
-## Requirements
-
-tabComplete requires [jQuery](http://jquery.com/)
+  1. `bower install tabcomplete`
 
 ## License
 
