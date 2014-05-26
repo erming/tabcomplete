@@ -8,7 +8,7 @@
  * Copyright (c) 2014 Mattias Erming <mattias@mattiaserming.com>
  * Licensed under the MIT License.
  *
- * Version 1.2.1
+ * Version 1.2.2
  */
 (function($) {
 	var keys = {

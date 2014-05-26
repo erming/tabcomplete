@@ -1,6 +1,6 @@
 {
   "name": "tabcomplete",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Lightweight tab completion for inputs and textareas",
   "main": "tabcomplete.js",
   "repository": {
