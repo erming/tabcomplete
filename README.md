@@ -9,9 +9,11 @@ Manual install:
   1. Download [tabcomplete.js](https://raw.githubusercontent.com/erming/tabcomplete/gh-pages/tabcomplete.js)
   2. Include source: `<script src="tabcomplete.js"></script>`
 
+With [Bower](http://bower.io/):  
+`$ bower install tabcomplete`
 
-With Bower:  
-  1. `bower install tabcomplete`
+With [npm](http://npmjs.org/):  
+`$ npm install tabcomplete`
 
 ## License
 
