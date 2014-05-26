@@ -1,9 +1,9 @@
 /*!
- * tabComplete
+ * tabcomplete
  * Lightweight tab completion for inputs and textareas
  *
  * Source:
- * https://github.com/erming/tabComplete
+ * https://github.com/erming/tabcomplete
  *
  * Copyright (c) 2014 Mattias Erming <mattias@mattiaserming.com>
  * Licensed under the MIT License.
@@ -17,6 +17,7 @@
 		down: 40
 	};
 	
+	$.fn.tabcomplete = // Alias
 	$.fn.tabComplete = function(args, options) {
 		if (this.length > 1) {
 			return this.each(function() {

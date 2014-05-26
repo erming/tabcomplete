@@ -5,9 +5,9 @@
   "main": "tabcomplete.js",
   "repository": {
     "type": "git",
-    "url": "http://github.com/erming/tabComplete"
+    "url": "http://github.com/erming/tabcomplete"
   },
-  "homepage": "https://github.com/erming/tabComplete",
+  "homepage": "https://github.com/erming/tabcomplete",
   "keywords": [
     "tab",
     "complete",

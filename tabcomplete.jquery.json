@@ -1,7 +1,7 @@
 {
-	"name": "tabComplete",
+	"name": "tabcomplete",
 	"version": "1.1.1",
-	"title": "tabComplete",
+	"title": "tabcomplete",
 	"description": "Lightweight tab completion for inputs and textareas",
 	"keywords": [
 		"tab",
@@ -11,8 +11,8 @@
 		"input",
 		"textarea"
 	],
-	"homepage": "https://github.com/erming/tabComplete",
-	"demo": "https://erming.github.io/tabComplete",
+	"homepage": "https://github.com/erming/tabcomplete",
+	"demo": "https://erming.github.io/tabcomplete",
 	"author": {
 		"name": "Mattias Erming",
 		"url": "http://github.com/erming"

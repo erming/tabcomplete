@@ -1,7 +1,7 @@
 {
-  "name": "tabComplete",
+  "name": "tabcomplete",
   "version": "1.1.1",
-  "homepage": "https://github.com/erming/tabComplete",
+  "homepage": "https://github.com/erming/tabcomplete",
   "authors": [
     "Mattias Erming <mattias@mattiaserming.com>"
   ],
