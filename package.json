@@ -2,7 +2,7 @@
   "name": "tabcomplete",
   "version": "1.2.2",
   "description": "Lightweight tab completion for inputs and textareas",
-  "main": "tabcomplete.js",
+  "filename": "tabcomplete.js",
   "repository": {
     "type": "git",
     "url": "http://github.com/erming/tabcomplete"
