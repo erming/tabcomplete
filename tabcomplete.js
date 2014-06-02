@@ -69,17 +69,31 @@
 			var input = self.val();
 			var word = input.split(/ |\n/).pop();
 			
-			if (!word) {
-				i = -1;
-				words = [];
-				last = "";
-			} else if (typeof args === "function") {
-				// If the user supplies a function, invoke it
-				// and keep the result.
-				words = args(word);
-			} else {
-				// Otherwise, call the .match() function.
-				words = match(args, word, options.caseSensitive);
+			// Reset iteration.
+			i = -1;
+			last = "";
+			words = [];
+			
+			// Check for matches if the current word is the last word.
+			if (self[0].selectionStart == input.length
+				&& word.length) {
+				if (typeof args === "function") {
+					// If the user supplies a function, invoke it
+					// and keep the result.
+					words = args(word);
+				} else {
+					// Otherwise, call the .match() function.
+					words = match(
+						word,
+						args,
+						options.caseSensitive
+					);
+				}
+				
+				// Append "after" to each word.
+				for (var i = 0; options.after && i < words.length; i++) {
+					words[i] += options.after;
+				}
 			}
 			
 			// Emit the number of matching words with the 'match' event.
@@ -103,7 +117,9 @@
 		
 		this.on("keydown.tabComplete", function(e) {
 			var key = e.which;
-			if (key == keys.tab|| (options.arrowKeys && (key == keys.up || key == keys.down))) { 
+			if (key == keys.tab
+				|| (options.arrowKeys && (key == keys.up || key == keys.down))) {
+				
 				// Don't lose focus on tab click.
 				e.preventDefault();
 				
@@ -134,11 +150,13 @@
 					return;
 				}
 				
-				self.val(
-					value.substr(0, value.lastIndexOf(last))
-						+ word
-						+ options.after
-				);
+				// Update element with the completed text.
+				var text = value.substr(0, self[0].selectionStart - last.length) + word;
+				self.val(text);
+				
+				if (tag == "TEXTAREA") {
+					self[0].selectionStart = text.length;
+				}
 				
 				// Remember the word until next time.
 				last = word;
@@ -172,7 +190,7 @@
 	
 	// Simple matching.
 	// Filter the array and return the items that begins with `word`.
-	function match(array, word, caseSensitive) {
+	function match(word, array, caseSensitive) {
 		return $.grep(
 			array,
 			function(w) {
@@ -216,21 +234,25 @@
 		
 		var hint = "";
 		if (typeof word !== "undefined") {
-			var text = input.val();
-			hint = text + word.substr(text.split(/ |\n/).pop().length);
+			var value = input.val();
+			hint = value + word.substr(value.split(/ |\n/).pop().length);
 		}
 		
 		clone.val(hint);
 	}
 	
 	// Hint by selecting part of the suggested word.
-	function select(word) {
+	function select(word) {	
 		var input = this;
-		var text = input.val();
-		
-		if (typeof word !== "undefined") {
-			input.val(text + word.substr(text.split(/ |\n/).pop().length));
-			input[0].selectionStart = text.length;
+		var value = input.val();
+		if (word) {
+			input.val(
+				value
+				+ word.substr(value.split(/ |\n/).pop().length)
+			);
+			
+			// Select hint.
+			input[0].selectionStart = value.length;
 		}
 	}
 })(jQuery);
