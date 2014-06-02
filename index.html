@@ -64,7 +64,7 @@
 <pre class="prettyprint">
 var options = {
 	after: "",
-	arrowKeys: true,
+	arrowKeys: false,
 	caseSensitive: false,
 	hint: true,
 	minLength: 1
@@ -83,7 +83,7 @@ var options = {
 &lt;script&gt;
 	// jQuery ready event
 	$(function() {
-		$("#target").tabComplete([
+		$("#target").tabcomplete([
 			"array",
 			"with",
 			"words",
@@ -130,7 +130,7 @@ var options = {
 		// Oooh! Fancy!
 		prettyPrint();
 		
-		$("#input, #textarea").tabComplete([ 
+		$("#input, #textarea").tabcomplete([ 
 			"Afghanistan",
 			"Albania",
 			"Algeria",

@@ -18,11 +18,11 @@
 		down: 40
 	};
 	
-	$.fn.tabcomplete = // Alias
-	$.fn.tabComplete = function(args, options) {
+	$.fn.tab = // Alias
+	$.fn.tabcomplete = function(args, options) {
 		if (this.length > 1) {
 			return this.each(function() {
-				$(this).tabComplete(args, options);
+				$(this).tabcomplete(args, options);
 			});
 		}
 		
@@ -35,9 +35,9 @@
 		// Set default options.
 		options = $.extend({
 			after: "",
-			arrowKeys: tag == "INPUT" ? true : false,
+			arrowKeys: false,
 			caseSensitive: false,
-			hint: true,
+			hint: "select",
 			minLength: 1,
 			onTabComplete: $.noop
 		}, options);
@@ -47,14 +47,28 @@
 		this.unbind(".tabComplete");
 		
 		var self = this;
+		var backspace = false;
 		var i = -1;
 		var words = [];
 		var last = "";
 		
-		this.on("input.tabComplete", function(e) {
+		var hint = $.noop;
+		
+		// Determine what type of hinting to use.
+		switch (options.hint) {
+		case "placeholder":
+			hint = placeholder;
+			break;
+		
+		case "select":
+			hint = select;
+			break;
+		}
+		
+		this.on("input.tabComplete", function() {
 			var input = self.val();
 			var word = input.split(/ |\n/).pop();
-
+			
 			if (!word) {
 				i = -1;
 				words = [];
@@ -72,7 +86,8 @@
 			self.trigger("match", words.length);
 			
 			if (options.hint) {
-				if (word.length >= options.minLength && words.length) {
+				if (!(options.hint == "select" && backspace) && word.length >= options.minLength) {
+					// Show hint.
 					hint.call(self, words[0]);
 				} else {
 					// Clear hinting.
@@ -80,11 +95,15 @@
 					hint.call(self, "");
 				}
 			}
+			
+			if (backspace) {
+				backspace = false;
+			}
 		});
 		
 		this.on("keydown.tabComplete", function(e) {
 			var key = e.which;
-			if (key == keys.tab || (options.arrowKeys && (key == keys.up || key == keys.down))) { 
+			if (key == keys.tab|| (options.arrowKeys && (key == keys.up || key == keys.down))) { 
 				// Don't lose focus on tab click.
 				e.preventDefault();
 				
@@ -108,33 +127,35 @@
 					return;
 				}
 				
-				var input = self.val().trim();
-				last = last || input.split(/ |\n/).pop();
+				var value = self.val();
+				last = last || value.substr(0, self[0].selectionStart).split(/ |\n/).pop();
 				
 				if (last.length < options.minLength) {
 					return;
 				}
 				
 				self.val(
-					input.substr(0, input.lastIndexOf(last))
-							+ word
-							+ options.after
+					value.substr(0, value.lastIndexOf(last))
+						+ word
+						+ options.after
 				);
 				
 				// Remember the word until next time.
 				last = word;
 				
-				// Trigger callback.
-				options.onTabComplete(last);
-				
-				// Trigger the 'tabComplete' event on a successful complete.
+				// Trigger the custom event and the callback.
 				self.trigger("tabComplete", last);
+				options.onTabComplete(last);
 				
 				if (options.hint) {
 					// Turn off any additional hinting.
 					hint.call(self, "");
 				}
 			} else if (e.which == keys.backspace) {
+				// Remember that backspace was pressed. This is used
+				// by the "input" event.
+				backspace = true;
+				
 				// Reset iteration.
 				i = -1;
 				last = "";
@@ -164,10 +185,10 @@
 		);
 	}
 
-	// Input hinting.
+	// Show placeholder text.
 	// This works by creating a copy of the input and placing it behind
 	// the real input.
-	function hint(word) {
+	function placeholder(word) {
 		var input = this;
 		var clone = input.prev(".hint");
 		
@@ -200,5 +221,16 @@
 		}
 		
 		clone.val(hint);
+	}
+	
+	// Hint by selecting part of the suggested word.
+	function select(word) {
+		var input = this;
+		var text = input.val();
+		
+		if (typeof word !== "undefined") {
+			input.val(text + word.substr(text.split(/ |\n/).pop().length));
+			input[0].selectionStart = text.length;
+		}
 	}
 })(jQuery);
