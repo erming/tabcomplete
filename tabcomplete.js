@@ -8,7 +8,7 @@
  * Copyright (c) 2014 Mattias Erming <mattias@mattiaserming.com>
  * Licensed under the MIT License.
  *
- * Version 1.2.2
+ * Version 1.3.0
  */
 (function($) {
 	var keys = {
@@ -38,13 +38,12 @@
 			arrowKeys: false,
 			caseSensitive: false,
 			hint: "select",
-			minLength: 1,
-			onTabComplete: $.noop
+			minLength: 1
 		}, options);
 		
 		// Unbind namespace.
 		// This allows us to override the plugin if necessary.
-		this.unbind(".tabComplete");
+		this.unbind(".tabcomplete");
 		
 		var self = this;
 		var backspace = false;
@@ -65,7 +64,7 @@
 			break;
 		}
 		
-		this.on("input.tabComplete", function() {
+		this.on("input.tabcomplete", function() {
 			var input = self.val();
 			var word = input.split(/ |\n/).pop();
 			
@@ -83,11 +82,7 @@
 					words = args(word);
 				} else {
 					// Otherwise, call the .match() function.
-					words = match(
-						word,
-						args,
-						options.caseSensitive
-					);
+					words = match(word, args, options.caseSensitive);
 				}
 				
 				// Append "after" to each word.
@@ -115,7 +110,7 @@
 			}
 		});
 		
-		this.on("keydown.tabComplete", function(e) {
+		this.on("keydown.tabcomplete", function(e) {
 			var key = e.which;
 			if (key == keys.tab
 				|| (options.arrowKeys && (key == keys.up || key == keys.down))) {
@@ -146,6 +141,7 @@
 				var value = self.val();
 				last = last || value.substr(0, self[0].selectionStart).split(/ |\n/).pop();
 				
+				// Return if the "minLength" requirement isn't met.
 				if (last.length < options.minLength) {
 					return;
 				}
@@ -154,16 +150,18 @@
 				var text = value.substr(0, self[0].selectionStart - last.length) + word;
 				self.val(text);
 				
-				if (tag == "TEXTAREA") {
+				// Put the cursor at the end after completion.
+				// This isn't strictly necessary, but solves an issue with
+				// Internet Explorer.
+				if (options.hint == "select") {
 					self[0].selectionStart = text.length;
 				}
 				
 				// Remember the word until next time.
 				last = word;
 				
-				// Trigger the custom event and the callback.
-				self.trigger("tabComplete", last);
-				options.onTabComplete(last);
+				// Emit event.
+				self.trigger("tabcomplete", last);
 				
 				if (options.hint) {
 					// Turn off any additional hinting.
