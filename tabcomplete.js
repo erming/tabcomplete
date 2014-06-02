@@ -85,7 +85,7 @@
 					words = match(word, args, options.caseSensitive);
 				}
 				
-				// Append "after" to each word.
+				// Append 'after' to each word.
 				for (var i = 0; options.after && i < words.length; i++) {
 					words[i] += options.after;
 				}
@@ -141,7 +141,7 @@
 				var value = self.val();
 				last = last || value.substr(0, self[0].selectionStart).split(/ |\n/).pop();
 				
-				// Return if the "minLength" requirement isn't met.
+				// Return if the 'minLength' requirement isn't met.
 				if (last.length < options.minLength) {
 					return;
 				}
@@ -169,7 +169,7 @@
 				}
 			} else if (e.which == keys.backspace) {
 				// Remember that backspace was pressed. This is used
-				// by the "input" event.
+				// by the 'input' event.
 				backspace = true;
 				
 				// Reset iteration.
@@ -187,7 +187,7 @@
 	}
 	
 	// Simple matching.
-	// Filter the array and return the items that begins with `word`.
+	// Filter the array and return the items that begins with 'word'.
 	function match(word, array, caseSensitive) {
 		return $.grep(
 			array,
