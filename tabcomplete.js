@@ -37,7 +37,7 @@
 			after: "",
 			arrowKeys: false,
 			caseSensitive: false,
-			hint: "select",
+			hint: "placeholder",
 			minLength: 1
 		}, options);
 		
