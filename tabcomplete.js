@@ -41,9 +41,10 @@
 			minLength: 1
 		}, options);
 		
-		// Unbind namespace.
+		// Remove any leftovers.
 		// This allows us to override the plugin if necessary.
 		this.unbind(".tabcomplete");
+		this.prev(".hint").remove();
 		
 		var self = this;
 		var backspace = false;

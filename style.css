@@ -75,8 +75,21 @@ h3 {
 	text-transform: uppercase;
 	transition: all .3s;
 }
+#options label {
+	margin: 0 20px;
+}
+#options input {
+	margin-bottom: 10px;
+}
+#options .options {
+	padding-top: 10px;
+	text-align: center;
+}
 #code {
 	margin-top: 40px;
+}
+#code hr {
+	margin: 10px 0 50px;
 }
 #code pre {
 	-moz-tab-size: 4;
