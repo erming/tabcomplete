@@ -15,6 +15,11 @@ With [NPM](https://www.npmjs.org/package/tabcomplete):
 With [Bower](http://bower.io/search/?q=tabcomplete):  
 `$ bower install tabcomplete`
 
+## CDNJS
+
+tabcomplete is now available from [cdnjs](http://cdnjs.com/libraries/tabcomplete)!  
+```<script src="//cdnjs.cloudflare.com/ajax/libs/tabcomplete/1.3.0/tabcomplete.js"></script>```
+
 ## License
 
 Available under [the MIT license](http://mths.be/mit).
