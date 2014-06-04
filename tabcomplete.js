@@ -86,8 +86,8 @@
 				}
 				
 				// Append 'after' to each word.
-				for (var i = 0; options.after && i < words.length; i++) {
-					words[i] += options.after;
+				if (options.after) {
+					words = $.map(words, function(w) { return w + options.after; });
 				}
 			}
 			
@@ -131,7 +131,7 @@
 						i--;
 					}
 				}
-					
+				
 				// Get next match.
 				var word = words[i % words.length];
 				if (!word) {
@@ -139,7 +139,7 @@
 				}
 				
 				var value = self.val();
-				last = last || value.substr(0, self[0].selectionStart).split(/ |\n/).pop();
+				last = last || value.split(/ |\n/).pop();
 				
 				// Return if the 'minLength' requirement isn't met.
 				if (last.length < options.minLength) {
