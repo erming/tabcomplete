@@ -18,7 +18,7 @@ With [Bower](http://bower.io/search/?q=tabcomplete):
 ## CDNJS
 
 tabcomplete is now available from [cdnjs](http://cdnjs.com/libraries/tabcomplete)!  
-```<script src="//cdnjs.cloudflare.com/ajax/libs/tabcomplete/1.3.0/tabcomplete.js"></script>```
+```<script src="//cdnjs.cloudflare.com/ajax/libs/tabcomplete/1.3.1/tabcomplete.js"></script>```
 
 ## License
 
