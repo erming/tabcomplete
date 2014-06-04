@@ -76,10 +76,13 @@ h3 {
 	transition: all .3s;
 }
 #options label {
+	display: inline-block;
 	margin: 0 20px;
 }
 #options input {
-	margin-bottom: 10px;
+	margin: 0 auto;
+	margin-bottom: 15px;
+	width: 15px;
 }
 #options .options {
 	padding-top: 10px;
