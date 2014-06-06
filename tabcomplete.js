@@ -35,7 +35,7 @@
 		// Set default options.
 		options = $.extend({
 			after: "",
-			arrowKeys: false,
+			arrowKeys: tag == "INPUT" ? true : false,
 			caseSensitive: false,
 			hint: "placeholder",
 			minLength: 1
