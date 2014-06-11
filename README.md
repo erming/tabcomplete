@@ -1,12 +1,12 @@
 ## Demo
 
 A GitHub-hosted demo can be found here:  
-[View project page](http://erming.github.io/tabcomplete/)
+[View project page](http://erming.github.io/tabcomplete/demo/)
 
 ## Install
 
 Manual install:  
-  1. Download [tabcomplete.js](https://raw.githubusercontent.com/erming/tabcomplete/gh-pages/tabcomplete.js)
+  1. Download [tabcomplete.js](https://raw.githubusercontent.com/erming/tabcomplete/gh-pages/src/tabcomplete.js)
   2. Include source: `<script src="tabcomplete.js"></script>`
 
 With [NPM](https://www.npmjs.org/package/tabcomplete):  
