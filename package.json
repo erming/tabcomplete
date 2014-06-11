@@ -9,12 +9,14 @@
     "url": "http://github.com/erming/tabcomplete"
   },
   "npmName": "tabcomplete",
-  "npmFileMap": [{
-    "basePath": "/src/",
-    "files": [
-      "*.js",
-    ]
-  }],
+  "npmFileMap": [
+    {
+      "basePath": "/src/",
+      "files": [
+        "*.js"
+      ]
+    }
+  ],
   "filename": "tabcomplete.js",
   "license": "MIT",
   "keywords": [
@@ -24,9 +26,12 @@
     "hint",
     "hinting",
     "input",
-    "textarea",
+    "textarea"
   ],
   "dependencies": {
     "jquery": ">=1.9"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5"
   }
 }
