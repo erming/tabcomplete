@@ -1,14 +1,7 @@
 /*!
  * tabcomplete
- * Lightweight tab completion for inputs and textareas
- *
- * Source:
- * https://github.com/erming/tabcomplete
- *
- * Copyright (c) 2014 Mattias Erming <mattias@mattiaserming.com>
- * Licensed under the MIT License.
- *
- * Version 1.3.1
+ * http://github.com/erming/tabcomplete
+ * v1.3.1
  */
 (function($) {
 	var keys = {
