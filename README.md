@@ -12,9 +12,6 @@ Manual install:
 With [NPM](https://www.npmjs.org/package/tabcomplete):  
 [![NPM](https://nodei.co/npm/tabcomplete.png?compact=true)](https://www.npmjs.org/package/tabcomplete)
 
-With [Bower](http://bower.io/search/?q=tabcomplete):  
-`$ bower install tabcomplete`
-
 ## CDNJS
 
 tabcomplete is now available from [cdnjs](http://cdnjs.com/libraries/tabcomplete)!  
