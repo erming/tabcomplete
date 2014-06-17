@@ -1,0 +1,23 @@
+{
+  "name": "tabcomplete",
+  "version": "1.3.1",
+  "homepage": "https://github.com/erming/tabcomplete",
+  "authors": [
+    "Mattias Erming <mattias@mattiaserming.com>"
+  ],
+  "description": "Lightweight tab completion for inputs and textareas",
+  "main": "./src/tabcomplete.js",
+  "keywords": [
+    "tab",
+    "complete",
+    "autocomplete",
+    "hint",
+    "hinting",
+    "input",
+    "textarea"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*"
+  ]
+}
