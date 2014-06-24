@@ -1,0 +1,397 @@
+<!doctype html>
+<html>
+	<head>
+	
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	
+	<title>tabcomplete</title>
+	
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="style.css">
+	
+	</head>
+	<body>
+	
+	<div class="container">
+		<section id="header" class="row">
+			<div class="col-sm-12">
+				<h1>tabcomplete</h1>
+			</div>
+		</section>
+		<section id="intro" class="row">
+			<div class="col-sm-12">
+				<p>
+					Hello world!<br>
+					Type something and then complete the words by pressing <kbd>tab</kbd>. Go ahead and try!
+				</p>
+				<p class="hint">
+					Press tab <strong>multiple</strong> times to iterate matches.
+				</p>
+			</div>
+		</section>
+		<section id="demo">
+			<div class="row">
+				<div class="col-sm-12">
+					<h3>Input</h3>
+					<div id="matches" style="opacity: 0;"><span>0</span> matches</div>
+					<input id="input">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12">
+					<h3>Textarea</h3>
+					<textarea id="textarea" rows="4"></textarea>
+				</div>
+			</div>
+			<div id="options" class="row">
+				<div class="col-sm-12">
+					<h3>Hinting</h3>
+					<p>Try the different hinting methods:</p>
+					<div class="options">
+					<label>
+						<input type="radio" name="hint" value="placeholder" checked="checked">
+						<br>Placeholder
+					</label>
+					<label>
+						<input type="radio" name="hint" value="select">
+						<br>Select
+					</label>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section id="code">
+			<div class="row">
+				<div class="col-sm-12">
+					<hr>
+					<h3>
+						Plugin usage
+					</h3>
+<pre class="prettyprint">
+.tabcomplete(wordsArray [, options]);
+</pre>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12">
+					<h3>
+						Default options
+					</h3>
+<pre class="prettyprint">
+var options = {
+	after: "",
+	arrowKeys: true,
+	caseSensitive: false,
+	hint: "placeholder",
+	minLength: 1
+};
+</pre>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12">
+					<h3>
+						Example
+					</h3>
+<pre class="prettyprint">
+&lt;script src="jquery.js"&gt;&lt;/script&gt;
+&lt;script src="tabcomplete.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+	// jQuery ready event
+	$(function() {
+		$("#target").tabcomplete([
+			"array",
+			"with",
+			"words",
+			"to",
+			"complete"
+		]);
+	});
+&lt;/script&gt;
+</pre>
+				</div>
+			</div>
+		</section>
+		<section id="download">
+			<div class="row">
+				<div class="col-sm-12">
+					<hr>
+					<a href="https://github.com/erming/tabcomplete/archive/1.3.2.zip">
+						Download
+					</a>
+				</div>
+			</div>
+		</section>
+		<section id="footer">
+			<div class="row">
+				<div class="col-sm-12">
+					<small>
+						tabcomplete is <a href="https://github.com/erming/tabcomplete">open source</a><br>
+						Made by <a href="https://github.com/erming">erming</a>
+					</small>
+				</div>
+			</div>
+		</section>
+	</div>
+	
+	<a id="fork" href="https://github.com/erming/tabcomplete">
+		<img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png">
+	</a>
+	
+	<script src="//cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="src/tabcomplete.js"></script>
+	<script>
+	$(function() {
+		// Oooh! Fancy!
+		prettyPrint();
+		
+		var inputs = $("#input, #textarea");
+		var options = $("#options");
+		var input = $("#input");
+		var matches = $("#matches");
+		
+		// Enable tabcomplete.
+		inputs.tabcomplete(countries);
+		
+		// Let user change the hinting method.
+		options.find("input").on("change", function() {
+			var radio = $(this);
+			inputs.val("").tabcomplete(countries, {hint: radio.val()});
+			input.trigger("match", 0).focus();
+		});
+		
+		// Listen to the 'match' event and render the
+		// number of matches.
+		input.on(
+			"match",
+			function(e, num) {
+				matches.css("opacity", (num == 0 ? 0 : 1)).find("span").html(num);
+			}
+		);
+		
+		input.focus();
+	});
+	
+	var countries = [
+		"Australia",
+		"Albania",
+		"Algeria",
+		"Andorra",
+		"Angola",
+		"Anguilla", 
+		"Antarctica",
+		"Argentina",
+		"Armenia", 
+		"Aruba",
+		"Austria",
+		"Azerbaijan",
+		"Bahamas",
+		"Bahrain",
+		"Bangladesh",
+		"Barbados",
+		"Belarus",
+		"Belgium",
+		"Belize",
+		"Benin",
+		"Bermuda", 
+		"Bhutan",
+		"Bolivia",
+		"Bosnia and Herzegovina",
+		"Botswana",
+		"Bouvet Island",
+		"Brazil",
+		"Brunei Darussalam",
+		"Bulgaria",
+		"Burkina Faso",
+		"Burundi",
+		"Cambodia",
+		"Cameroon", 
+		"Canada",
+		"Cape Verde",
+		"Cayman Islands",
+		"Chad",
+		"Chile",
+		"China",
+		"Christmas Island",
+		"Cocos Islands",
+		"Colombia",
+		"Comoros",
+		"Congo",
+		"Cook Islands",
+		"Costa Rica",
+		"Cote D'Ivoire",
+		"Croatia",
+		"Cuba",
+		"Cyprus",
+		"Czech Republic",
+		"Denmark",
+		"Djibouti",
+		"Dominica",
+		"Dominican Republic",
+		"Ecuador",
+		"Egypt",
+		"El Salvador", 
+		"Equatorial Guinea",
+		"Eritrea",
+		"Estonia",
+		"Ethiopia",
+		"Falkland Islands",
+		"Faroe Islands",
+		"Fiji",
+		"Finland",
+		"France",
+		"French Guiana",
+		"French Polynesia",
+		"Gabon",
+		"Gambia",
+		"Georgia",
+		"Germany",
+		"Ghana",
+		"Gibraltar",
+		"Greece",
+		"Greenland",
+		"Grenada",	
+		"Guadeloupe",
+		"Guam",
+		"Guatemala",
+		"Guernsey",
+		"Guinea",
+		"Guinea-Bissau",
+		"Guyana",
+		"Haiti",
+		"Honduras",
+		"Hong Kong",
+		"Hungary",
+		"Iceland",
+		"India",
+		"Indonesia",
+		"Iran",
+		"Iraq",
+		"Ireland",
+		"Isle of Man",
+		"Israel",
+		"Italy",
+		"Jamaica",
+		"Japan",
+		"Jersey",
+		"Jordan",
+		"Kazakhstan",
+		"Kenya",
+		"Kiribati",
+		"Korea",
+		"Kuwait",
+		"Kyrgyzstan",
+		"Latvia",
+		"Lebanon",
+		"Lesotho",
+		"Liberia",
+		"Liechtenstein",
+		"Lithuania",
+		"Luxembourg",
+		"Macao",
+		"Macedonia",
+		"Madagascar",
+		"Malawi",
+		"Malaysia",
+		"Maldives",
+		"Mali",
+		"Malta",
+		"Marshall Islands",
+		"Martinique",
+		"Mauritania",
+		"Mauritius",
+		"Mayotte",
+		"Mexico",
+		"Moldova",
+		"Monaco",
+		"Mongolia",
+		"Montserrat",
+		"Morocco",
+		"Mozambique",
+		"Myanmar",
+		"Namibia",
+		"Nauru",
+		"Nepal",
+		"Netherlands",
+		"New Caledonia",
+		"New Zealand",
+		"Nicaragua", 
+		"Niger",
+		"Nigeria",
+		"Niue",
+		"Norway",
+		"Oman",
+		"Pakistan",
+		"Palau",
+		"Panama",
+		"Papua New Guinea",
+		"Paraguay",
+		"Peru",
+		"Philippines",
+		"Pitcairn",
+		"Poland",
+		"Portugal",
+		"Puerto Rico",
+		"Qatar",
+		"Reunion",
+		"Romania",
+		"Russian Federation",
+		"Rwanda",
+		"Saint Helena",
+		"Saint Lucia",
+		"Samoa",
+		"San Marino",
+		"Saudi Arabia",
+		"Senegal",
+		"Serbia",
+		"Seychelles",
+		"Sierra Leone",
+		"Singapore",
+		"Slovakia",
+		"Slovenia",
+		"Solomon Islands",
+		"Somalia",
+		"South Africa",
+		"Spain",
+		"Sri Lanka",
+		"Sudan",
+		"Suriname",
+		"Swaziland",
+		"Sweden",
+		"Switzerland",
+		"Taiwan",
+		"Tajikistan",
+		"Tanzania",
+		"Thailand",
+		"Timor-Leste",
+		"Togo",
+		"Tokelau",
+		"Tonga",
+		"Tunisia",
+		"Turkey",
+		"Turkmenistan",
+		"Tuvalu",
+		"Uganda",
+		"Ukraine",
+		"United Arab Emirates",
+		"United Kingdom",
+		"United States",
+		"Uruguay",
+		"Uzbekistan",
+		"Vanuatu",
+		"Venezuela",
+		"Viet Nam",
+		"Virgin Islands",
+		"Wallis and Futuna",
+		"Western Sahara",
+		"Yemen",
+		"Zambia",
+		"Zimbabwe",
+	];
+	</script>
+	
+	</body>
+</html>
