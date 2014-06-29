@@ -211,7 +211,7 @@
 		// not already exist.
 		if (!clone.length) {
 			input.wrap(
-				$("<div>").css({position: "relative"})
+				$("<div>").css({position: "relative", height: input.css("height")})
 			);
 			clone = input
 				.clone()
