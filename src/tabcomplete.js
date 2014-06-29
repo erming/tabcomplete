@@ -11,6 +11,15 @@
 		down: 40
 	};
 	
+	$.tabcomplete = {};
+	$.tabcomplete.defaultOptions = {
+		after: "",
+		arrowKeys: false,
+		caseSensitive: false,
+		hint: "placeholder",
+		minLength: 1
+	};
+	
 	$.fn.tab = // Alias
 	$.fn.tabcomplete = function(args, options) {
 		if (this.length > 1) {
@@ -26,13 +35,10 @@
 		}
 		
 		// Set default options.
-		options = $.extend({
-			after: "",
-			arrowKeys: tag == "INPUT" ? true : false,
-			caseSensitive: false,
-			hint: "placeholder",
-			minLength: 1
-		}, options);
+		options = $.extend(
+			$.tabcomplete.defaultOptions,
+			options
+		);
 		
 		// Remove any leftovers.
 		// This allows us to override the plugin if necessary.
