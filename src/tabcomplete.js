@@ -147,8 +147,8 @@
 				}
 				
 				// Update element with the completed text.
-				var text = value.substr(0, self[0].selectionStart - last.length) + word;
-				self.val(text);
+				var text = options.hint == "select" ? value : value.substr(0, self[0].selectionStart - last.length) + word;
+				self.val(text);
 				
 				// Put the cursor at the end after completion.
 				// This isn't strictly necessary, but solves an issue with
