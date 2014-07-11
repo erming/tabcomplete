@@ -17,7 +17,8 @@
 		arrowKeys: false,
 		caseSensitive: false,
 		hint: "placeholder",
-		minLength: 1
+		minLength: 1,
+        match: match,
 	};
 	
 	$.fn.tab = // Alias
@@ -82,7 +83,7 @@
 					words = args(word);
 				} else {
 					// Otherwise, call the .match() function.
-					words = match(word, args, options.caseSensitive);
+					words = options.match(word, args, options.caseSensitive);
 				}
 				
 				// Append 'after' to each word.
@@ -147,7 +148,7 @@
 				}
 				
 				// Update element with the completed text.
-				var text = value.substr(0, self[0].selectionStart - last.length) + word;
+				var text = options.hint == "select" ? value : value.substr(0, self[0].selectionStart - last.length) + word;
 				self.val(text);
 				
 				// Put the cursor at the end after completion.
