@@ -82,9 +82,10 @@
 <pre class="prettyprint">
 var options = {
 	after: "",
-	arrowKeys: true,
-	caseSensitive: false,
+	arrowKeys: false,
 	hint: "placeholder",
+	match: function(word, words) { .. },
+	caseSensitive: false,
 	minLength: 1
 };
 </pre>
@@ -153,7 +154,7 @@ var options = {
 		var input = $("#input");
 		var matches = $("#matches");
 		
-		// Enable tabcomplete.
+		// Turn on tabcomplete.
 		inputs.tabcomplete(countries);
 		
 		// Let user change the hinting method.

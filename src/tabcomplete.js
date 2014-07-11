@@ -14,11 +14,11 @@
 	$.tabcomplete = {};
 	$.tabcomplete.defaultOptions = {
 		after: "",
-		arrowKeys: false,
+		arrowKeys: false,    // Allow the use of <up> and <down> keys to iterate
+		hint: "placeholder", // "placeholder", "select", false
+		match: match,
 		caseSensitive: false,
-		hint: "placeholder",
-		minLength: 1,
-        match: match,
+		minLength: 1
 	};
 	
 	$.fn.tab = // Alias
@@ -77,14 +77,8 @@
 			// Check for matches if the current word is the last word.
 			if (self[0].selectionStart == input.length
 				&& word.length) {
-				if (typeof args === "function") {
-					// If the user supplies a function, invoke it
-					// and keep the result.
-					words = args(word);
-				} else {
-					// Otherwise, call the .match() function.
-					words = options.match(word, args, options.caseSensitive);
-				}
+				// Call the match() function to filter the words.
+				words = options.match(word, args, options.caseSensitive);
 				
 				// Append 'after' to each word.
 				if (options.after) {
