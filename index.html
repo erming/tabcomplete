@@ -1,19 +1,19 @@
 <!doctype html>
 <html>
 	<head>
-	
+
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	
+
 	<title>tabcomplete</title>
-	
+
 	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="style.css">
-	
+
 	</head>
 	<body>
-	
+
 	<div class="container">
 		<section id="header" class="row">
 			<div class="col-sm-12">
@@ -86,7 +86,8 @@ var options = {
 	hint: "placeholder",
 	match: function(word, words) { .. },
 	caseSensitive: false,
-	minLength: 1
+	minLength: 1,
+	wrapInput: true
 };
 </pre>
 				</div>
@@ -136,11 +137,11 @@ var options = {
 			</div>
 		</section>
 	</div>
-	
+
 	<a id="fork" href="https://github.com/erming/tabcomplete">
 		<img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png">
 	</a>
-	
+
 	<script src="//cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script src="src/tabcomplete.js"></script>
@@ -148,22 +149,22 @@ var options = {
 	$(function() {
 		// Oooh! Fancy!
 		prettyPrint();
-		
+
 		var inputs = $("#input, #textarea");
 		var options = $("#options");
 		var input = $("#input");
 		var matches = $("#matches");
-		
+
 		// Turn on tabcomplete.
 		inputs.tabcomplete(countries);
-		
+
 		// Let user change the hinting method.
 		options.find("input").on("change", function() {
 			var radio = $(this);
 			inputs.val("").tabcomplete(countries, {hint: radio.val()});
 			input.trigger("match", 0).focus();
 		});
-		
+
 		// Listen to the 'match' event and render the
 		// number of matches.
 		input.on(
@@ -172,20 +173,20 @@ var options = {
 				matches.css("opacity", (num == 0 ? 0 : 1)).find("span").html(num);
 			}
 		);
-		
+
 		input.focus();
 	});
-	
+
 	var countries = [
 		"Australia",
 		"Albania",
 		"Algeria",
 		"Andorra",
 		"Angola",
-		"Anguilla", 
+		"Anguilla",
 		"Antarctica",
 		"Argentina",
-		"Armenia", 
+		"Armenia",
 		"Aruba",
 		"Austria",
 		"Azerbaijan",
@@ -197,7 +198,7 @@ var options = {
 		"Belgium",
 		"Belize",
 		"Benin",
-		"Bermuda", 
+		"Bermuda",
 		"Bhutan",
 		"Bolivia",
 		"Bosnia and Herzegovina",
@@ -209,7 +210,7 @@ var options = {
 		"Burkina Faso",
 		"Burundi",
 		"Cambodia",
-		"Cameroon", 
+		"Cameroon",
 		"Canada",
 		"Cape Verde",
 		"Cayman Islands",
@@ -234,7 +235,7 @@ var options = {
 		"Dominican Republic",
 		"Ecuador",
 		"Egypt",
-		"El Salvador", 
+		"El Salvador",
 		"Equatorial Guinea",
 		"Eritrea",
 		"Estonia",
@@ -254,7 +255,7 @@ var options = {
 		"Gibraltar",
 		"Greece",
 		"Greenland",
-		"Grenada",	
+		"Grenada",
 		"Guadeloupe",
 		"Guam",
 		"Guatemala",
@@ -319,7 +320,7 @@ var options = {
 		"Netherlands",
 		"New Caledonia",
 		"New Zealand",
-		"Nicaragua", 
+		"Nicaragua",
 		"Niger",
 		"Nigeria",
 		"Niue",
@@ -393,6 +394,6 @@ var options = {
 		"Zimbabwe",
 	];
 	</script>
-	
+
 	</body>
 </html>
