@@ -51,6 +51,7 @@ h3 {
 	border: 2px solid #bdc3c7;
 	border-radius: 6px;
 	font: 20px Helvetica, Arial, sans-serif;
+	display: block;
 	line-height: 1.467;
 	outline: none;
 	padding: 8px 12px;
