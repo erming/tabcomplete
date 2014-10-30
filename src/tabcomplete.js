@@ -18,7 +18,8 @@
 		hint: "placeholder", // "placeholder", "select", false
 		match: match,
 		caseSensitive: false,
-		minLength: 1
+		minLength: 1,
+		wrapInput: true
 	};
 	
 	$.fn.tab = // Alias
@@ -36,7 +37,7 @@
 		}
 		
 		// Set default options.
-		options = $.extend(
+		this.options = options = $.extend(
 			$.tabcomplete.defaultOptions,
 			options
 		);
@@ -211,9 +212,11 @@
 		// Lets create a clone of the input if it does
 		// not already exist.
 		if (!clone.length) {
-			input.wrap(
-				$("<div>").css({position: "relative", height: input.css("height")})
-			);
+			if (input.options.wrapInput) {
+				input.wrap(
+					$("<div>").css({position: "relative", height: input.css("height")})
+				);
+			}
 			clone = input
 				.clone()
 				.attr("tabindex", -1)
