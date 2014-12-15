@@ -1,3 +1,9 @@
+/*!
+ * tabcomplete
+ * https://github.com/erming/tabcomplete
+ * v1.5.0
+ */
+
 (function($) {
 	var keys = {
 		backspace: 8,

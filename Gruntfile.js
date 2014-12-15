@@ -2,26 +2,52 @@ module.exports = function(grunt) {
 	// Project configuration.
 	grunt.initConfig({
 		pkg: grunt.file.readJSON("package.json"),
+
 		uglify: {
 			js: {
 				files: {
-					"src/tabcomplete.min.js": ["src/tabcomplete.js"]
-				},
+					"dist/tabcomplete.min.js": ["src/tabcomplete.js"]
+				}
+			}
+		},
+
+		copy: {
+			dist: {
+				expand: true,
+				cwd: "src/",
+				dest: "dist/",
+				src: "tabcomplete.js"
+			}
+		},
+
+		usebanner: {
+			dist: {
 				options: {
-					banner: "/*!\n"
-						+ " * tabcomplete\n"
-						+ " * http://github.com/erming/tabcomplete\n"
-						+ " * v<%= pkg.version %>\n"
-						+ " */\n",
+					expand: true,
+					banner: [
+						"/*!",
+						" * <%= pkg.name %>",
+						" * <%= pkg.homepage %>",
+						" * v<%= pkg.version %>",
+						" */",
+						""
+					].join("\n")
+				},
+				files: {
+					src: ["dist/**/*.js"]
 				}
 			}
 		}
 	});
-	
+
 	// Load and run uglify.
 	grunt.loadNpmTasks("grunt-contrib-uglify");
-	grunt.registerTask(
-		"default",
-		["uglify"]
-	);
+	grunt.loadNpmTasks("grunt-contrib-copy");
+	grunt.loadNpmTasks("grunt-banner");
+
+	grunt.registerTask("default", [
+		"copy",
+		"uglify",
+		"usebanner"
+	]);
 };
