@@ -20,6 +20,19 @@ module.exports = function(grunt) {
 			}
 		},
 
+		template: {
+			build: {
+				options: {
+					data: {
+						pkg: '<%= pkg %>'
+					}
+				},
+				files: {
+					'index.html': 'src/index.html'
+				}
+			}
+		},
+
 		usebanner: {
 			dist: {
 				options: {
@@ -44,10 +57,12 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks("grunt-contrib-uglify");
 	grunt.loadNpmTasks("grunt-contrib-copy");
 	grunt.loadNpmTasks("grunt-banner");
+	grunt.loadNpmTasks("grunt-template");
 
 	grunt.registerTask("default", [
 		"copy",
 		"uglify",
-		"usebanner"
+		"usebanner",
+		"template" // Build src/index.html -> ./index.html
 	]);
 };
