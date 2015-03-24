@@ -197,6 +197,15 @@
 		);
 	}
 
+
+	// Propagate scroll events from element <source> to element <destination>.
+	function follow_scroll(source, destination) { 
+		source.scroll(function() {
+			destination.scrollTop(source.scrollTop()); 
+			destination.scrollLeft(source.scrollLeft());
+		});
+	}
+
 	// Show placeholder text.
 	// This works by creating a copy of the input and placing it behind
 	// the real input.
@@ -226,6 +235,7 @@
 			clone.css({
 				position: "absolute",
 			});
+			follow_scroll(input, clone);
 		}
 
 		var hint = "";
