@@ -200,7 +200,7 @@
 
 	// Propagate scroll events from element <source> to element <destination>.
 	function follow_scroll(source, destination) { 
-		source.bind("scroll change", function() {
+		source.bind("scroll input change", function() {
 			destination.scrollTop(source.scrollTop()); 
 			destination.scrollLeft(source.scrollLeft());
 		});
