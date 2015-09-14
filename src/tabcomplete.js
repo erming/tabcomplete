@@ -214,7 +214,11 @@
 		if (!clone.length) {
 			if (input.options.wrapInput) {
 				input.wrap(
-					$("<div>").css({position: "relative", height: input.css("height"), display: input.css("display")})
+					$("<div>").css({
+						position: "relative",
+						height: input.css("height"),
+						display: input.css("display") === "block" ? "block" : "inline-block"
+					})
 				);
 			}
 			clone = input
