@@ -180,7 +180,7 @@
 			hint.call(this, "");
 		}
 
-		this.on("mousedown.tabcomplete", function() {
+		this.on("blur.tabcomplete", function() {
 			reset();
 			if (options.hint) {
 				hint.call(self, "");
