@@ -1,7 +1,7 @@
 /*!
  * tabcomplete
  * http://github.com/erming/tabcomplete
- * v1.5.0
+ * v1.5.1
  */
 (function($) {
 	var keys = {
