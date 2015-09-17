@@ -200,9 +200,11 @@
 
 	// Propagate scroll events from element <source> to element <destination>.
 	function follow_scroll(source, destination) { 
-		source.bind("scroll input change", function() {
-			destination.scrollTop(source.scrollTop()); 
-			destination.scrollLeft(source.scrollLeft());
+		source.bind("input keydown keyup focus blur click change scroll", function() {
+			setTimeout(function() {
+				destination.scrollTop(source.scrollTop()); 
+				destination.scrollLeft(source.scrollLeft());
+			}, 0);
 		});
 	}
 
