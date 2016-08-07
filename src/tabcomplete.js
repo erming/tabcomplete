@@ -1,7 +1,7 @@
 /*!
  * tabcomplete
  * http://github.com/erming/tabcomplete
- * v1.5.2
+ * v1.5.3
  */
 (function($) {
 	var keys = {
@@ -106,9 +106,13 @@
 
 		this.on("keydown.tabcomplete", function(e) {
 			var key = e.which;
-			if (key == keys.tab && !e.ctrlKey
-				|| (options.arrowKeys && (key == keys.up || key == keys.down))) {
 
+			// Ignore modifier keys
+			if (e.ctrlKey || e.shiftKey || e.altKey) {
+				return;
+			}
+
+			if (key == keys.tab && !e.ctrlKey || (options.arrowKeys && (key == keys.up || key == keys.down))) {
 				// Don't lose focus on tab click.
 				e.preventDefault();
 
