@@ -1,7 +1,7 @@
 ## Demo
 
 A GitHub-hosted demo can be found here:  
-[View project page](http://erming.github.io/tabcomplete/)
+[View project page](http://tabcomplete.erming.io/)
 
 ## Install
 
